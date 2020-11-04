@@ -1,0 +1,10 @@
+﻿<tr onclick="clickitem('@[itemID]')" id='itml_@[itemID]'>
+	<td id="ori_@[itemID]" onclick="previewer('trs_@[itemID]','prv_@[itemID]')">@[OriginalText]	</td>
+	<td id="trs_@[itemID]" onclick="startEdit('@[itemID]')" onchange="previewer('trs_@[itemID]','prv_@[itemID]')">@[TranslateText]</td>
+	<td>
+	<div id="prv_@[itemID]"></div>
+	</td>
+	<td>
+	ID:@[ID] | Narrator:@[Narrator]
+	</td>
+</tr>

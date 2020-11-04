@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>@[FileName]</title>
+    <script type="text/javascript" src="@[HtmlPath]/js/scripts.js"></script>
+    <script type="text/javascript" src="@[HtmlPath]/js/previewer.js"></script>
+</head>
+<body>
+    <h1>@[FileName]</h1>
+    <hr />
+    <table>
+        <thead>
+            <tr>
+                <td style="width:30%">
+                    原始文本
+                </td>
+                <td style="width:30%">
+                    翻译文本
+                </td>
+                <td style="width:30%">
+                    预览效果
+                </td>
+                <td style="width:10%">信息</td>
+            </tr>
+        </thead>
+        <tbody>
+            @[ContentAsTable]
+        </tbody>
+    </table>
+    <hr />
+    <button onclick="window.external.Save()">保存</button>
+    <button onclick="window.external.Reload()">重载</button>
+</body>
+</html>
