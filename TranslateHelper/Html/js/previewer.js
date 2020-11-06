@@ -1,5 +1,6 @@
 ﻿function previewer(srcId, dstId) {
-    var s_inner = document.getElementById(srcId).textContent;
+    var s_inner = document.getElementById(srcId).innerHTML;
+    document
     var i = 0;
     var s = '';
     var spanc = 0;
@@ -9,21 +10,24 @@
         if (c == '#') {
             if (s_inner.charAt(i) == '0') {
                 ++i;
-                s += '<span style="font-family:Georgia">';
+                s += '<span style="font-family:Hymmnos">';
                 ++spanc;
                 noc = true;
+                continue;
             }
             if (s_inner.charAt(i) == '#') {
                 ++i;
                 --spanc;
                 s += '</span>';
                 noc = false;
+                continue;
             }
             if (s_inner.charAt(i) == '1') {
                 ++i;
                 ++spanc;
-                s += '<span style="font-family:Hymmnos">';
+                s += '<span style="font-family:Georgia">';
                 noc = true;
+                continue;
             }
         }
         if (!noc) {
@@ -62,6 +66,14 @@
                 }
             }
         }
+        if(isEng)
+        {
+            if((c.charCodeAt(0) >= 'Ａ'.charCodeAt(0) && c.charCodeAt(0) <= 'Ｚ'.charCodeAt(0))
+            || (c.charCodeAt(0) >= 'ａ'.charCodeAt(0) && c.charCodeAt(0) <= 'ｚ'.charCodeAt(0))
+            || (c.charCodeAt(0) >= '０'.charCodeAt(0) && c.charCodeAt(0) <= '９'.charCodeAt(0))
+            || (c.charCodeAt(0) >= '！'.charCodeAt(0) && c.charCodeAt(0) <= '？'.charCodeAt(0))) c = String.fromCharCode(c.charCodeAt(0) - 65248);
+            if(c == '　') c = ' ';
+        }
         s += c;
     }
 
@@ -71,3 +83,5 @@
     }
     document.getElementById(dstId).innerHTML = s;
 }
+
+var isEng = false;

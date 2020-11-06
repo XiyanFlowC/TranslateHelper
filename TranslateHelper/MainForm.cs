@@ -150,6 +150,7 @@ namespace TranslateHelper
 
         private void 保存ToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if (hi == null) MessageBox.Show("文件未加载", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
             hi.Save();
         }
 
@@ -166,6 +167,7 @@ namespace TranslateHelper
 
         private void 另存为ToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if (hi == null) MessageBox.Show("文件未加载", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
             if (DialogResult.Cancel == saveFileDialog1.ShowDialog()) return;
             hi.SaveAs(saveFileDialog1.FileName);
         }
@@ -278,6 +280,19 @@ namespace TranslateHelper
             string fileid = (string)itemList.SelectedItem;
             CmpTrs(fileid);
             statusLabel.Text = "就绪";
+        }
+
+        private void 查找与替换ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (hi == null)
+            {
+                MessageBox.Show("文件未载入", "非法操作");return;
+            }
+            if (DialogResult.Cancel == MessageBox.Show("替换前必须保存更改，确认？", "警告", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning)) return;
+            hi.Save();
+            SeekNReplace snr = new SeekNReplace();
+            snr.items = hi.Content.Translation;
+            snr.ShowDialog();
         }
     }
 }

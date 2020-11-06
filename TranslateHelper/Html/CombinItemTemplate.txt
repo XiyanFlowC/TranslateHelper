@@ -1,0 +1,5 @@
+<tr onclick="clickitem('@[itemID]')" id='itml_@[itemID]'>
+	<td id="ori_@[itemID]" onclick="cpy('ori_@[itemID]','trs_@[itemID]')">@[OriginalText]</td>
+	<td id="snd_@[itemID]" onclick="cpy('snd_@[itemID]','trs_@[itemID]')">@[TranslateText]</td>
+	<td id="trs_@[itemID]" onclick="startEdit('@[itemID]')"></td>
+</tr>

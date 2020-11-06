@@ -17,6 +17,14 @@ namespace TranslateHelper
         readonly bool enableSave;
         bool changed = false;
 
+        public TextContent Content 
+        { 
+            get
+            {
+                return content;
+            }
+        }
+
         public HtmlInteracting(TextContent cnt, WebBrowser target, bool EnableSave = true)
         {
             content = cnt;
