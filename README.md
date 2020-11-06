@@ -7,7 +7,11 @@ A translate helper witch has a little expendability. The UI &amp; comments langu
 ## 内附插件
 目前主要为Ar tonelico的对话导出和菜鸟格式的文本导出提供支持。
 
+要使之工作，需要将bin\\Plugins复制到输出目录中。
+
 ### Ar tonelico对话导出
+要使之工作，输出目录需要含有narrator.txt。
+
 从AT的.evd文件中抽出的对话，具有以下格式：
 
 \<id\>,\<narrator id\>,\<text\>
@@ -16,5 +20,29 @@ A translate helper witch has a little expendability. The UI &amp; comments langu
 
 ### 菜鸟格式的文本导出
 菜鸟小生所开发的导出器所使用的常用文本格式：
+
+\<address\>,\<length\>,\<text\>
+
+-----
+
+## Usage
+To simplify workflow when make translating tools.
+
+## Plugins
+Provides parsing ability for \*.evd extract text from Ar tonelico and standard addressed text.
+
+To make it work, copy bin\\Plugins to output fold。
+
+### Ar tonelico dialogue extraction
+To make it work, narrator.txt should exists in output fold。
+
+The extraction format：
+
+\<id\>,\<narrator id\>,\<text\>
+
+\<selection text\>
+
+### Standard addressed text
+Format：
 
 \<address\>,\<length\>,\<text\>
