@@ -168,6 +168,11 @@ namespace TranslateHelper
                 LogLevel = 0;
             }
 
+            public static void Close()
+            {
+                pen.Close();
+            }
+
             public static void Information(string msg)
             {
                 pen.WriteLine("[Info] " + msg);

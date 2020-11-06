@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -24,24 +25,31 @@ namespace TranslateHelper
         private void MainForm_Load(object sender, EventArgs e)
         {
             statusLabel.Text = "正在初始化……";
-            shower.Navigate(Application.StartupPath + "/Html/ViewerTemplate.html");
+            Helpers.Logger.Information("Application start up. Initializing...");
+            shower.Navigate(Application.StartupPath + "/Html/NotFoundTemplate.html");
             try
             {
+                Helpers.Logger.Information("Load and apply configuration...");
                 InitLoad();
             }
             catch(IOException ex)
             {
+                Helpers.Logger.Error("Load configuration failed.");
                 statusLabel.Text += "失败";
                 if(DialogResult.No == MessageBox.Show("程序初始化失败。尝试清空临时文件、重新生成过程数据？", "错误", MessageBoxButtons.YesNo, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1))
                 {
-                    MessageBox.Show(ex.ToString(), "信息", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    Helpers.Logger.Information("User decided to exit.");
+                    Helpers.Logger.Debug(ex.ToString());
+                    MessageBox.Show("程序无法正常启动。", "信息", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
                 }
                 else
                 {
+                    Helpers.Logger.Information("Configuration re-setup...");
                     statusLabel.Text = "设定舍弃，环境初始化";
                     Helpers.DataInitialize();
                     statusLabel.Text = "正在初始化……";
+                    Helpers.Logger.Information("Try to load config again...");
                     InitLoad();
                 }
             }
@@ -50,26 +58,31 @@ namespace TranslateHelper
             //    MessageBox.Show(ex.ToString(), "信息", MessageBoxButtons.OK, MessageBoxIcon.Information);
             //}
             statusLabel.Text = "就绪";
+            Helpers.Logger.Information("Ready");
         }
 
         private void InitLoad()
         {
+            Helpers.Logger.Information("InitLoad: Loading config...");
             if(-1 == Configuration.LoadConfiguration("./cfg.bin")) Helpers.DataInitialize();
             //ParserChoose pc = new ParserChoose();
             if (!Helpers.LoadParsers())
             {
+                Helpers.Logger.Warning("Plugin invalid.");
                 MessageBox.Show("所选插件无效。");
                 Helpers.ReloadPlugin();
                 //pc.ShowDialog();
             }
+            Helpers.Logger.Information("InitLoad: Plugin loaded.");
             //pc.Close();
 
             string[] srcFiles = Directory.GetFiles(Configuration.SourceText, "*." + Global.srcParser.SupportFormat);
             foreach(var file in srcFiles)
             {
-                string tmp = file.Substring(file.LastIndexOf('/') + 1);
+                string tmp = file.Substring(file.LastIndexOfAny(new char[] { '/', '\\' }));
                 itemList.Items.Add( tmp.Substring(0, tmp.LastIndexOf('.')) );
             }
+            Helpers.Logger.Information("InitLoad: File list initialized.");
 
             //Helpers.LoadNarrators("./narrator.txt");
         }
@@ -83,6 +96,7 @@ namespace TranslateHelper
                 return;
             }
             string fileid = (string)itemList.SelectedItem;
+            Helpers.Logger.Information("File I/O: Load file: " + fileid);
             LoadFile(fileid);
             statusLabel.Text = "就绪";
         }
@@ -105,18 +119,22 @@ namespace TranslateHelper
                                 Configuration.SourceText + fileid + '.' + Global.srcParser.SupportFormat,
                                 Configuration.TranslationStorePath + fileid + '.' + Global.trsParser.SupportFormat);
             }
-            catch(IOException)
+            catch(IOException ex)
             {
+                Helpers.Logger.Error("File I/O: Can't load file: " + fileid);
+                Helpers.Logger.Debug("File I/O: " + ex.ToString());
                 MessageBox.Show("文件状态异常。");
                 return;
             }
             //shower.Navigate();
             //shower.Url = new Uri(Application.StartupPath + "/Html/ViewerTemplate.html");
 
+            Helpers.Logger.Information("Viewer: Rendering...");
             shower.DocumentText = (HtmlGenerator.HtmlViewerGen("./Html/ViewerTemplate.html",
                 "./Html/SingleItemTemplate.txt",
                 tc));
 
+            Helpers.Logger.Information("Viewer: Creating code-viewer interactive interface.");
             hi = new HtmlInteracting(tc, shower);//创建交互介面
             shower.ObjectForScripting = hi;
         }
@@ -145,6 +163,8 @@ namespace TranslateHelper
                 e.Cancel = true;
                 return;
             }
+            Helpers.Logger.Information("Application shutting down...");
+            Helpers.Logger.Close();
             Configuration.SaveConfiguration("cfg.bin");
         }
 
@@ -196,6 +216,8 @@ namespace TranslateHelper
             Configuration.SecondarySourceText = paths.SndPath;
 
             paths.Close();
+
+            Helpers.Logger.Information("User updated the path information.");
         }
 
         private void CmpSrc(string fileid)
@@ -211,9 +233,11 @@ namespace TranslateHelper
                                 Configuration.SourceText + fileid + '.' + Global.srcParser.SupportFormat,
                                 Configuration.SecondarySourceText + fileid + '.' + Global.srcParser.SupportFormat);
             }
-            catch (IOException)
+            catch (IOException ex)
             {
                 MessageBox.Show("文件状态异常。");
+                Helpers.Logger.Error("File I/O: Can't load file.");
+                Helpers.Logger.Debug(ex.ToString());
                 return;
             }
             //shower.Navigate();
@@ -236,6 +260,7 @@ namespace TranslateHelper
                 return;
             }
             string fileid = (string)itemList.SelectedItem;
+            Helpers.Logger.Information("File I/O: Load file" + fileid);
             CmpSrc(fileid);
             statusLabel.Text = "就绪";
         }
@@ -278,6 +303,7 @@ namespace TranslateHelper
                 return;
             }
             string fileid = (string)itemList.SelectedItem;
+            Helpers.Logger.Information("File I/O: Load file" + fileid);
             CmpTrs(fileid);
             statusLabel.Text = "就绪";
         }
@@ -293,6 +319,14 @@ namespace TranslateHelper
             SeekNReplace snr = new SeekNReplace();
             snr.items = hi.Content.Translation;
             snr.ShowDialog();
+        }
+
+        private void 删除日志ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Helpers.Logger.Close();
+            File.Delete("./log.txt");
+            Helpers.Logger.Init("./log.txt");
+            Helpers.Logger.Information("User clear previous log in application at " + DateTime.Now.ToString());
         }
     }
 }

@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace FileInterface
 {
-    public class ParsingFailedException
+    public class ParsingFailedException : Exception
     {
         public int ErrorCode { get; set; }
         public string Information { get; set; }
         public override string ToString()
         {
-            return "ParsingFailedException: \n" + Information;
+            return base.ToString() + Environment.NewLine + Information;
         }
         public ParsingFailedException()
         {
@@ -51,6 +51,12 @@ namespace FileInterface
 
     public class FileFormatInvalidException : ParsingFailedException
     {
+        public FileFormatInvalidException(int errCode)
+        {
+            ErrorCode = errCode;
+            GetInformation();
+        }
+
         void GetInformation()
         {
             switch (ErrorCode)

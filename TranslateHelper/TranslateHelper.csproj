@@ -53,6 +53,18 @@
       <DependentUpon>ChoosePlugin.cs</DependentUpon>
     </Compile>
     <Compile Include="Configuration.cs" />
+    <Compile Include="FolderSearch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FolderSearch.Designer.cs">
+      <DependentUpon>FolderSearch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SearchProgress.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SearchProgress.Designer.cs">
+      <DependentUpon>SearchProgress.cs</DependentUpon>
+    </Compile>
     <Compile Include="SEditor.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -96,6 +108,12 @@
     <Compile Include="TextContent.cs" />
     <EmbeddedResource Include="ChoosePlugin.resx">
       <DependentUpon>ChoosePlugin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FolderSearch.resx">
+      <DependentUpon>FolderSearch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SearchProgress.resx">
+      <DependentUpon>SearchProgress.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SEditor.resx">
       <DependentUpon>SEditor.cs</DependentUpon>

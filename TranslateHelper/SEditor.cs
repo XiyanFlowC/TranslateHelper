@@ -24,13 +24,17 @@ namespace TranslateHelper
         {
             get
             {
-                return trans.Text;
+                if(isNatural)
+                {
+                    return trans.Text.Replace(Environment.NewLine, "CR");
+                }
+                else return trans.Text;
             }
             set
             {
                 if(isNatural)//TODO:支持脚本的人性化控制符系统（包括get和set）
                 {
-                    
+                    trans.Text = value.Replace("CR", Environment.NewLine);
                 }
                 else
                 {
@@ -52,6 +56,7 @@ namespace TranslateHelper
             特异控制符模式ToolStripMenuItem.Checked = true;
             自然模式ToolStripMenuItem.Checked = false;
             isNatural = false;
+            TransText = TransText;
         }
 
         private void 自然模式ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -60,6 +65,7 @@ namespace TranslateHelper
             自然模式ToolStripMenuItem.Checked = true;
             特异控制符模式ToolStripMenuItem.Checked = false;
             isNatural = true;
+            TransText = TransText;
         }
 
         private void 插入IMToolStripMenuItem_Click(object sender, EventArgs e)
@@ -79,12 +85,12 @@ namespace TranslateHelper
 
         private void trans_TextChanged(object sender, EventArgs e)
         {
-            TargetElement.InnerHtml = trans.Text;
+            TargetElement.InnerHtml = TransText;
         }
 
         private void 以原始文本覆盖ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            trans.Text = OriginalText;
+            TransText = OriginalText;
         }
     }
 }
