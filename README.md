@@ -10,11 +10,11 @@ A translate helper witch has a little expendability. The UI &amp; comments langu
 ### Ar tonelico对话导出
 从AT的.evd文件中抽出的对话，具有以下格式：
 
-<id>,<narrator id>,<text>
+\<id\>,\<narrator id\>,\<text\>
 
-<selection text>
+\<selection text\>
 
 ### 菜鸟格式的文本导出
 菜鸟小生所开发的导出器所使用的常用文本格式：
 
-<address>,<length>,<text>
+\<address\>,\<length\>,\<text\>
