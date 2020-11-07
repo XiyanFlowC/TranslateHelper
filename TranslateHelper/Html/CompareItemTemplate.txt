@@ -1,6 +1,6 @@
 <tr onclick="clickitem('@[itemID]')" id='itml_@[itemID]'>
 	<td id="ori_@[itemID]" onclick="previewer('ori_@[itemID]','prv_@[itemID]')">@[OriginalText]</td>
-	<td>@[TranslateText]</td>
+	<td id="snd_@[itemID]" onclick="previewer('snd_@[itemID]','prv_@[itemID]')">@[TranslateText]</td>
 	<td id="trs_@[itemID]" ondblclick="startEdit('@[itemID]')" onclick="previewer('trs_@[itemID]','prv_@[itemID]')"></td>
 	<td><div id="prv_@[itemID]"></div>
 	</td>

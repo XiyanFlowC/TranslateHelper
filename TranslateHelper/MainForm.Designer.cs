@@ -51,6 +51,8 @@
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.更改插件ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.修改目录ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
+            this.删除日志ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.帮助ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.帮助ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
@@ -62,8 +64,6 @@
             this.shower = new System.Windows.Forms.WebBrowser();
             this.fontDialog1 = new System.Windows.Forms.FontDialog();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
-            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
-            this.删除日志ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -84,7 +84,7 @@
             this.帮助ToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1382, 42);
+            this.menuStrip1.Size = new System.Drawing.Size(1382, 39);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -102,26 +102,26 @@
             // 保存ToolStripMenuItem
             // 
             this.保存ToolStripMenuItem.Name = "保存ToolStripMenuItem";
-            this.保存ToolStripMenuItem.Size = new System.Drawing.Size(219, 44);
+            this.保存ToolStripMenuItem.Size = new System.Drawing.Size(359, 44);
             this.保存ToolStripMenuItem.Text = "保存";
             this.保存ToolStripMenuItem.Click += new System.EventHandler(this.保存ToolStripMenuItem_Click);
             // 
             // 另存为ToolStripMenuItem
             // 
             this.另存为ToolStripMenuItem.Name = "另存为ToolStripMenuItem";
-            this.另存为ToolStripMenuItem.Size = new System.Drawing.Size(219, 44);
+            this.另存为ToolStripMenuItem.Size = new System.Drawing.Size(359, 44);
             this.另存为ToolStripMenuItem.Text = "另存为";
             this.另存为ToolStripMenuItem.Click += new System.EventHandler(this.另存为ToolStripMenuItem_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(216, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(356, 6);
             // 
             // 退出ToolStripMenuItem
             // 
             this.退出ToolStripMenuItem.Name = "退出ToolStripMenuItem";
-            this.退出ToolStripMenuItem.Size = new System.Drawing.Size(219, 44);
+            this.退出ToolStripMenuItem.Size = new System.Drawing.Size(359, 44);
             this.退出ToolStripMenuItem.Text = "退出";
             this.退出ToolStripMenuItem.Click += new System.EventHandler(this.退出ToolStripMenuItem_Click);
             // 
@@ -252,6 +252,18 @@
             this.修改目录ToolStripMenuItem.Text = "修改目录";
             this.修改目录ToolStripMenuItem.Click += new System.EventHandler(this.修改目录ToolStripMenuItem_Click);
             // 
+            // toolStripSeparator5
+            // 
+            this.toolStripSeparator5.Name = "toolStripSeparator5";
+            this.toolStripSeparator5.Size = new System.Drawing.Size(360, 6);
+            // 
+            // 删除日志ToolStripMenuItem
+            // 
+            this.删除日志ToolStripMenuItem.Name = "删除日志ToolStripMenuItem";
+            this.删除日志ToolStripMenuItem.Size = new System.Drawing.Size(363, 44);
+            this.删除日志ToolStripMenuItem.Text = "删除日志";
+            this.删除日志ToolStripMenuItem.Click += new System.EventHandler(this.删除日志ToolStripMenuItem_Click);
+            // 
             // 帮助ToolStripMenuItem
             // 
             this.帮助ToolStripMenuItem.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
@@ -298,11 +310,12 @@
             this.statusLabel.Name = "statusLabel";
             this.statusLabel.Size = new System.Drawing.Size(134, 31);
             this.statusLabel.Text = "Undefined";
+            this.statusLabel.TextChanged += new System.EventHandler(this.statusLabel_TextChanged);
             // 
             // splitContainer1
             // 
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer1.Location = new System.Drawing.Point(0, 42);
+            this.splitContainer1.Location = new System.Drawing.Point(0, 39);
             this.splitContainer1.Margin = new System.Windows.Forms.Padding(6);
             this.splitContainer1.Name = "splitContainer1";
             // 
@@ -313,7 +326,7 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.shower);
-            this.splitContainer1.Size = new System.Drawing.Size(1382, 799);
+            this.splitContainer1.Size = new System.Drawing.Size(1382, 802);
             this.splitContainer1.SplitterDistance = 338;
             this.splitContainer1.SplitterWidth = 8;
             this.splitContainer1.TabIndex = 2;
@@ -327,7 +340,7 @@
             this.itemList.Location = new System.Drawing.Point(0, 0);
             this.itemList.Margin = new System.Windows.Forms.Padding(6);
             this.itemList.Name = "itemList";
-            this.itemList.Size = new System.Drawing.Size(338, 799);
+            this.itemList.Size = new System.Drawing.Size(338, 802);
             this.itemList.TabIndex = 0;
             this.itemList.SelectedIndexChanged += new System.EventHandler(this.itemList_SelectedIndexChanged);
             // 
@@ -338,26 +351,14 @@
             this.shower.Margin = new System.Windows.Forms.Padding(6);
             this.shower.MinimumSize = new System.Drawing.Size(40, 40);
             this.shower.Name = "shower";
-            this.shower.Size = new System.Drawing.Size(1036, 799);
+            this.shower.Size = new System.Drawing.Size(1036, 802);
             this.shower.TabIndex = 2;
             this.shower.Url = new System.Uri("", System.UriKind.Relative);
             // 
-            // toolStripSeparator5
-            // 
-            this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(360, 6);
-            // 
-            // 删除日志ToolStripMenuItem
-            // 
-            this.删除日志ToolStripMenuItem.Name = "删除日志ToolStripMenuItem";
-            this.删除日志ToolStripMenuItem.Size = new System.Drawing.Size(363, 44);
-            this.删除日志ToolStripMenuItem.Text = "删除日志";
-            this.删除日志ToolStripMenuItem.Click += new System.EventHandler(this.删除日志ToolStripMenuItem_Click);
-            // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 24F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(192F, 192F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.ClientSize = new System.Drawing.Size(1382, 882);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.statusStrip1);

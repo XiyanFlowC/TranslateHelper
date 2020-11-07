@@ -84,6 +84,7 @@ namespace TranslateHelper
             }
             Helpers.Logger.Information("InitLoad: File list initialized.");
 
+            Helpers.LoadTermTable("./term.txt");
             //Helpers.LoadNarrators("./narrator.txt");
         }
 
@@ -146,7 +147,7 @@ namespace TranslateHelper
 
         private void 关于ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("通用文本编辑器 Ver.1.0-alpha\n最初为AT而编写。\n作者：巇岩流云", "关于");
+            MessageBox.Show("通用文本编辑器 Ver.1.0-beta\n最初为AT而编写。\n作者：巇岩流云", "关于");
         }
 
         private void 转到ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -170,7 +171,11 @@ namespace TranslateHelper
 
         private void 保存ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (hi == null) MessageBox.Show("文件未加载", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            if (hi == null)
+            {
+                MessageBox.Show("文件未加载", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
             hi.Save();
         }
 
@@ -187,7 +192,11 @@ namespace TranslateHelper
 
         private void 另存为ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (hi == null) MessageBox.Show("文件未加载", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            if (hi == null)
+            {
+                MessageBox.Show("文件未加载", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
             if (DialogResult.Cancel == saveFileDialog1.ShowDialog()) return;
             hi.SaveAs(saveFileDialog1.FileName);
         }
@@ -327,6 +336,11 @@ namespace TranslateHelper
             File.Delete("./log.txt");
             Helpers.Logger.Init("./log.txt");
             Helpers.Logger.Information("User clear previous log in application at " + DateTime.Now.ToString());
+        }
+
+        private void statusLabel_TextChanged(object sender, EventArgs e)
+        {
+            Update();
         }
     }
 }

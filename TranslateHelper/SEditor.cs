@@ -12,6 +12,8 @@ namespace TranslateHelper
 {
     public partial class SEditor : Form
     {
+        TermChecker tck;
+
         public SEditor()
         {
             InitializeComponent();
@@ -73,6 +75,13 @@ namespace TranslateHelper
             trans.Text += "IMXX";
         }
 
+        internal void Edit()
+        {
+            if (tck != null) tck.CheckTerms(OriginalText);
+            if(!Visible) Show();
+            Focus();
+        }
+
         private void 插入SPToolStripMenuItem_Click(object sender, EventArgs e)
         {
             trans.Text += "SPXX";
@@ -86,11 +95,28 @@ namespace TranslateHelper
         private void trans_TextChanged(object sender, EventArgs e)
         {
             TargetElement.InnerHtml = TransText;
+            if(tck != null && tck.AlwaysVerify)
+            {
+                tck.varifyTerms(TransText);
+            }
+            //if(tck != null)tck.CheckTerms(OriginalText);
         }
 
         private void 以原始文本覆盖ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             TransText = OriginalText;
+        }
+
+        private void 专有名词检查ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (tck == null || tck.IsDisposed)
+            {
+                tck = new TermChecker();
+                tck.CheckTerms(OriginalText);
+            }
+
+            if (!tck.Visible) tck.Show(this);
+            else tck.Focus();
         }
     }
 }

@@ -27,6 +27,8 @@ namespace TranslateHelper
 
         public static string HtmlRenderClass { get; set; }
         public static System.Drawing.Font Font { get; internal set; }
+        public static bool UseSnd { get; internal set; }
+        public static bool HalfTran { get; internal set; }
 
         public static int LoadConfiguration(string configFilePath)
         {
@@ -57,6 +59,17 @@ namespace TranslateHelper
                     double em = eye.ReadDouble();
                     Font = new System.Drawing.Font(name, (float)em);
                 }
+
+                if(version < 12)
+                {
+                    HalfTran = false;
+                    UseSnd = false;
+                }
+                else
+                {
+                    HalfTran = eye.ReadBoolean();
+                    UseSnd = eye.ReadBoolean();
+                }
             }
             catch (IOException)
             {
@@ -75,7 +88,7 @@ namespace TranslateHelper
 
             try
             {
-                pen.Write(11);
+                pen.Write(12);
 
                 pen.Write(SourceText);
                 pen.Write(SecondarySourceText);
@@ -90,6 +103,9 @@ namespace TranslateHelper
 
                 pen.Write(Font.Name);
                 pen.Write((double)Font.Size);
+
+                pen.Write(HalfTran);
+                pen.Write(UseSnd);
             }
             catch(IOException)
             {

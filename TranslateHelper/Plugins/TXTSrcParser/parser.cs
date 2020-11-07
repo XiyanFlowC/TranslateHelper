@@ -23,6 +23,7 @@ namespace TXTSrcParser
             foreach(var i in item)
             {
                 var it = i as ATDialogueItem;
+                if(it == null) throw new ParsingFailedException(1);
                 if(it.IsSelection)
                 {
                     sw.WriteLine(it.Dialogue);
@@ -79,6 +80,7 @@ namespace TXTSrcParser
                         sb.Append(cha);
                     }
                 }
+                if(field != 0 && field != 2) throw new FileFormatInvalidException(2);
                 di.IsSelection = (field == 0) ? true : false;
                 
                 di.Dialogue = sb.ToString();

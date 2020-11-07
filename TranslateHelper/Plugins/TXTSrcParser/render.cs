@@ -46,7 +46,7 @@ namespace TXTSrcParser
 
         private string ResolveNID(int narrator)
         {
-            if (!Narrator.ContainsKey(narrator)) return "未索引";
+            if (!Narrator.ContainsKey(narrator)) return narrator.ToString();
             return Narrator[narrator];
         }
 

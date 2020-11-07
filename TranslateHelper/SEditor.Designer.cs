@@ -45,7 +45,6 @@
             // 
             // menuStrip1
             // 
-            this.menuStrip1.GripMargin = new System.Windows.Forms.Padding(2, 2, 0, 2);
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(32, 32);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.模式ToolStripMenuItem,
@@ -53,7 +52,7 @@
             this.控制符ToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(949, 42);
+            this.menuStrip1.Size = new System.Drawing.Size(949, 39);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -71,14 +70,14 @@
             this.特异控制符模式ToolStripMenuItem.Checked = true;
             this.特异控制符模式ToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.特异控制符模式ToolStripMenuItem.Name = "特异控制符模式ToolStripMenuItem";
-            this.特异控制符模式ToolStripMenuItem.Size = new System.Drawing.Size(315, 44);
+            this.特异控制符模式ToolStripMenuItem.Size = new System.Drawing.Size(359, 44);
             this.特异控制符模式ToolStripMenuItem.Text = "特异控制符模式";
             this.特异控制符模式ToolStripMenuItem.Click += new System.EventHandler(this.特异控制符模式ToolStripMenuItem_Click);
             // 
             // 自然模式ToolStripMenuItem
             // 
             this.自然模式ToolStripMenuItem.Name = "自然模式ToolStripMenuItem";
-            this.自然模式ToolStripMenuItem.Size = new System.Drawing.Size(315, 44);
+            this.自然模式ToolStripMenuItem.Size = new System.Drawing.Size(359, 44);
             this.自然模式ToolStripMenuItem.Text = "自然模式";
             this.自然模式ToolStripMenuItem.Click += new System.EventHandler(this.自然模式ToolStripMenuItem_Click);
             // 
@@ -96,6 +95,7 @@
             this.专有名词检查ToolStripMenuItem.Name = "专有名词检查ToolStripMenuItem";
             this.专有名词检查ToolStripMenuItem.Size = new System.Drawing.Size(359, 44);
             this.专有名词检查ToolStripMenuItem.Text = "专有名词检查";
+            this.专有名词检查ToolStripMenuItem.Click += new System.EventHandler(this.专有名词检查ToolStripMenuItem_Click);
             // 
             // 以原始文本覆盖ToolStripMenuItem
             // 
@@ -117,31 +117,31 @@
             // 插入IMToolStripMenuItem
             // 
             this.插入IMToolStripMenuItem.Name = "插入IMToolStripMenuItem";
-            this.插入IMToolStripMenuItem.Size = new System.Drawing.Size(227, 44);
+            this.插入IMToolStripMenuItem.Size = new System.Drawing.Size(359, 44);
             this.插入IMToolStripMenuItem.Text = "插入IM";
             this.插入IMToolStripMenuItem.Click += new System.EventHandler(this.插入IMToolStripMenuItem_Click);
             // 
             // 插入SPToolStripMenuItem
             // 
             this.插入SPToolStripMenuItem.Name = "插入SPToolStripMenuItem";
-            this.插入SPToolStripMenuItem.Size = new System.Drawing.Size(227, 44);
+            this.插入SPToolStripMenuItem.Size = new System.Drawing.Size(359, 44);
             this.插入SPToolStripMenuItem.Text = "插入SP";
             this.插入SPToolStripMenuItem.Click += new System.EventHandler(this.插入SPToolStripMenuItem_Click);
             // 
             // 插入CRToolStripMenuItem
             // 
             this.插入CRToolStripMenuItem.Name = "插入CRToolStripMenuItem";
-            this.插入CRToolStripMenuItem.Size = new System.Drawing.Size(227, 44);
+            this.插入CRToolStripMenuItem.Size = new System.Drawing.Size(359, 44);
             this.插入CRToolStripMenuItem.Text = "插入CR";
             this.插入CRToolStripMenuItem.Click += new System.EventHandler(this.插入CRToolStripMenuItem_Click);
             // 
             // trans
             // 
             this.trans.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.trans.Location = new System.Drawing.Point(0, 42);
+            this.trans.Location = new System.Drawing.Point(0, 39);
             this.trans.Multiline = true;
             this.trans.Name = "trans";
-            this.trans.Size = new System.Drawing.Size(949, 268);
+            this.trans.Size = new System.Drawing.Size(949, 271);
             this.trans.TabIndex = 1;
             this.trans.TextChanged += new System.EventHandler(this.trans_TextChanged);
             // 

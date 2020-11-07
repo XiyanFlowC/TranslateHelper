@@ -126,6 +126,43 @@ namespace TranslateHelper
             return true;
         }
 
+        internal static void LoadTermTable(string v)
+        {
+            if (!File.Exists(v)) File.Create(v);
+            string[] lines = File.ReadAllLines(v);
+
+            Global.oriTerm = new Dictionary<string, string>();
+            Global.sndTerm = new Dictionary<string, string>();
+
+            foreach (var line in lines)
+            {
+                string[] fields = line.Split(',');
+                if (fields.Length != 3 && fields.Length != 2)
+                {
+                    Logger.Fatal("Term Info Load Failed.");
+                    Application.Exit();
+                }
+
+                Global.oriTerm[fields[0]] = fields[1];
+                if(fields.Length == 3)
+                    Global.sndTerm[fields[2]] = fields[1];
+            }
+        }
+
+        internal static string ToHalfShape(string fullShapeString)
+        {
+            StringBuilder sb = new StringBuilder();
+            foreach (char c in fullShapeString)
+            {
+                 if ((c >= 'Ａ' && c <= 'Ｚ')
+                     || (c >= 'ａ' && c <= 'ｚ')
+                     || (c >= '０' && c <= '９')
+                     || (c >= '！' && c <= '？')) sb.Append((char)(c - 65248));
+                 if (c == '　') sb.Append(' ');
+            }
+            return sb.ToString();
+        }
+
         public static Assembly LoadPlugin(string path)//载入或编译插件
         {
             Assembly src;
