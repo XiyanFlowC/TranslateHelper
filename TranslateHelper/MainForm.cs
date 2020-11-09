@@ -147,7 +147,7 @@ namespace TranslateHelper
 
         private void 关于ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("通用文本编辑器 Ver.1.0-beta\n最初为AT而编写。\n作者：巇岩流云", "关于");
+            MessageBox.Show("通用文本编辑器 Ver.1.1\n最初为AT而编写。\n作者：巇岩流云", "关于");
         }
 
         private void 转到ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -155,6 +155,7 @@ namespace TranslateHelper
             TextEditor.Interaction.InputBox input = new TextEditor.Interaction.InputBox();
             if (DialogResult.Cancel == input.ShowDialog()) return;
             LoadFile(input.Value);
+            itemList.SelectedIndex = -1;
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -266,6 +267,7 @@ namespace TranslateHelper
             if (itemList.SelectedIndex == -1)
             {
                 shower.DocumentText = File.ReadAllText("./Html/NotFoundTemplate.html");
+                statusLabel.Text = "未选择文件";
                 return;
             }
             string fileid = (string)itemList.SelectedItem;
@@ -341,6 +343,46 @@ namespace TranslateHelper
         private void statusLabel_TextChanged(object sender, EventArgs e)
         {
             Update();
+        }
+
+        private void 来源文件夹查找ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FolderSearch fs = new FolderSearch();
+            fs.DirectoryPath = Configuration.SourceText;
+            fs.EnableReplace = false;
+            fs.Parser = Global.srcParser;
+
+            fs.ShowDialog();
+        }
+
+        private void 附属来源文件夹查找ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FolderSearch fs = new FolderSearch();
+            fs.DirectoryPath = Configuration.SecondarySourceText;
+            fs.EnableReplace = false;
+            fs.Parser = Global.srcParser;
+
+            fs.ShowDialog();
+        }
+
+        private void 翻译文件夹查找ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FolderSearch fs = new FolderSearch();
+            fs.DirectoryPath = Configuration.TranslationStorePath;
+            fs.EnableReplace = true;
+            fs.Parser = Global.trsParser;
+
+            fs.ShowDialog();
+        }
+
+        private void 比对文件夹查找ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FolderSearch fs = new FolderSearch();
+            fs.DirectoryPath = Configuration.ComparingTranslationPath;
+            fs.EnableReplace = true;
+            fs.Parser = Global.trsParser;
+
+            fs.ShowDialog();
         }
     }
 }

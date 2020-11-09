@@ -36,7 +36,7 @@
                     c = s_inner.charAt(++i);
                     c += s_inner.charAt(++i);
                     ++i;
-                    s += '<img src="/assets/preview/im_' + c + '.webp" />';
+                    s += '<img src="' + dirroot + '/img/im' + c + '.png" height=22px/>';
                     continue;
                 }
             }
@@ -45,7 +45,7 @@
                     c = s_inner.charAt(++i);
                     c += s_inner.charAt(++i);
                     ++i;
-                    s += '<img src="/assets/preview/sp_' + c + '.webp" />';
+                    s += '<img src="' + dirroot + '/img/sp' + c + '.png" height=22px/>';
                     continue;
                 }
             }

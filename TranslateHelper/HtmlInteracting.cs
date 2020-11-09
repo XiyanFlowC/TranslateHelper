@@ -38,6 +38,12 @@ namespace TranslateHelper
             for(int i = 0; i < content.Translation.Length; ++i)
             {
                 var ele = webBrowser.Document.GetElementById("trs_" + i);//从WebBrowser中载入数据
+                if(ele == null)//数据不匹配或已卸载
+                {
+                    content.SaveTranslation("./emergencydump");
+                    MessageBox.Show("Save failed. Buffer data collapsed.\nData dumped to ./emergencydump");
+                    return;
+                }
                 content.Translation[i].Dialogue = ele.InnerHtml;
             }
             content.SaveTranslation();

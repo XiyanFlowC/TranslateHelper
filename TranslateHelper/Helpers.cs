@@ -4,6 +4,7 @@ using System;
 using System.CodeDom.Compiler;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Diagnostics;
 using System.IO;
 using System.Reflection;
 using System.Text;
@@ -209,7 +210,7 @@ namespace TranslateHelper
             {
                 pen.Close();
             }
-
+            [Conditional("DEBUG")]
             public static void Information(string msg)
             {
                 pen.WriteLine("[Info] " + msg);

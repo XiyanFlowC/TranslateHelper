@@ -14,7 +14,8 @@ namespace TranslateHelper
         {
             string rst = File.ReadAllText(frameTemplatePath);
             rst = rst.Replace("@[FileName]", txtcnt.filename)
-                .Replace("@[HtmlPath]", "file://" + Application.StartupPath + "/Html/");
+                .Replace("@[HtmlPath]", "file://" + Application.StartupPath + "/Html/")
+                .Replace("@[SHtmlPath]", ("file://" + Application.StartupPath + "/Html/").Replace("\\", "\\\\"));
             string tableText = HtmlItemGen(itemTemplatePath, txtcnt.Content, txtcnt.Translation);
             rst = rst.Replace("@[ContentAsTable]", tableText);
             return rst;
