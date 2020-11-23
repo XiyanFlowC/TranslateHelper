@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.文件ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.保存ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -64,16 +65,22 @@
             this.shower = new System.Windows.Forms.WebBrowser();
             this.fontDialog1 = new System.Windows.Forms.FontDialog();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.保存ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.另存为ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.搜索和替换ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
             // 
+            this.menuStrip1.GripMargin = new System.Windows.Forms.Padding(2, 2, 0, 2);
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(32, 32);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.文件ToolStripMenuItem,
@@ -361,6 +368,7 @@
             // 
             // shower
             // 
+            this.shower.AllowWebBrowserDrop = false;
             this.shower.Dock = System.Windows.Forms.DockStyle.Fill;
             this.shower.IsWebBrowserContextMenuEnabled = false;
             this.shower.Location = new System.Drawing.Point(0, 0);
@@ -370,6 +378,34 @@
             this.shower.Size = new System.Drawing.Size(1036, 793);
             this.shower.TabIndex = 2;
             this.shower.Url = new System.Uri("", System.UriKind.Relative);
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(32, 32);
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.保存ToolStripMenuItem1,
+            this.另存为ToolStripMenuItem1,
+            this.搜索和替换ToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(209, 118);
+            // 
+            // 保存ToolStripMenuItem1
+            // 
+            this.保存ToolStripMenuItem1.Name = "保存ToolStripMenuItem1";
+            this.保存ToolStripMenuItem1.Size = new System.Drawing.Size(208, 38);
+            this.保存ToolStripMenuItem1.Text = "保存";
+            // 
+            // 另存为ToolStripMenuItem1
+            // 
+            this.另存为ToolStripMenuItem1.Name = "另存为ToolStripMenuItem1";
+            this.另存为ToolStripMenuItem1.Size = new System.Drawing.Size(208, 38);
+            this.另存为ToolStripMenuItem1.Text = "另存为";
+            // 
+            // 搜索和替换ToolStripMenuItem
+            // 
+            this.搜索和替换ToolStripMenuItem.Name = "搜索和替换ToolStripMenuItem";
+            this.搜索和替换ToolStripMenuItem.Size = new System.Drawing.Size(208, 38);
+            this.搜索和替换ToolStripMenuItem.Text = "搜索和替换";
             // 
             // MainForm
             // 
@@ -393,6 +429,7 @@
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -436,6 +473,10 @@
         private System.Windows.Forms.ToolStripMenuItem 修改目录ToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
         private System.Windows.Forms.ToolStripMenuItem 删除日志ToolStripMenuItem;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem 保存ToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem 另存为ToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem 搜索和替换ToolStripMenuItem;
     }
 }
 

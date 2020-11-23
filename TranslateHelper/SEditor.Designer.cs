@@ -35,22 +35,16 @@
             this.工具ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.专有名词检查ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.以原始文本覆盖ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.控制符ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.插入IMToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.插入SPToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.插入CRToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.trans = new System.Windows.Forms.TextBox();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
             // 
-            this.menuStrip1.GripMargin = new System.Windows.Forms.Padding(2, 2, 0, 2);
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(32, 32);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.模式ToolStripMenuItem,
-            this.工具ToolStripMenuItem,
-            this.控制符ToolStripMenuItem});
+            this.工具ToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(949, 39);
@@ -110,37 +104,6 @@
             this.以原始文本覆盖ToolStripMenuItem.Text = "以原始文本覆盖(&R)";
             this.以原始文本覆盖ToolStripMenuItem.Click += new System.EventHandler(this.以原始文本覆盖ToolStripMenuItem_Click);
             // 
-            // 控制符ToolStripMenuItem
-            // 
-            this.控制符ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.插入IMToolStripMenuItem,
-            this.插入SPToolStripMenuItem,
-            this.插入CRToolStripMenuItem});
-            this.控制符ToolStripMenuItem.Name = "控制符ToolStripMenuItem";
-            this.控制符ToolStripMenuItem.Size = new System.Drawing.Size(129, 35);
-            this.控制符ToolStripMenuItem.Text = "控制符(&I)";
-            // 
-            // 插入IMToolStripMenuItem
-            // 
-            this.插入IMToolStripMenuItem.Name = "插入IMToolStripMenuItem";
-            this.插入IMToolStripMenuItem.Size = new System.Drawing.Size(359, 44);
-            this.插入IMToolStripMenuItem.Text = "插入IM";
-            this.插入IMToolStripMenuItem.Click += new System.EventHandler(this.插入IMToolStripMenuItem_Click);
-            // 
-            // 插入SPToolStripMenuItem
-            // 
-            this.插入SPToolStripMenuItem.Name = "插入SPToolStripMenuItem";
-            this.插入SPToolStripMenuItem.Size = new System.Drawing.Size(359, 44);
-            this.插入SPToolStripMenuItem.Text = "插入SP";
-            this.插入SPToolStripMenuItem.Click += new System.EventHandler(this.插入SPToolStripMenuItem_Click);
-            // 
-            // 插入CRToolStripMenuItem
-            // 
-            this.插入CRToolStripMenuItem.Name = "插入CRToolStripMenuItem";
-            this.插入CRToolStripMenuItem.Size = new System.Drawing.Size(359, 44);
-            this.插入CRToolStripMenuItem.Text = "插入CR";
-            this.插入CRToolStripMenuItem.Click += new System.EventHandler(this.插入CRToolStripMenuItem_Click);
-            // 
             // trans
             // 
             this.trans.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -178,11 +141,7 @@
         private System.Windows.Forms.ToolStripMenuItem 自然模式ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 工具ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 专有名词检查ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 控制符ToolStripMenuItem;
         private System.Windows.Forms.TextBox trans;
-        private System.Windows.Forms.ToolStripMenuItem 插入IMToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 插入SPToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 插入CRToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 以原始文本覆盖ToolStripMenuItem;
     }
 }

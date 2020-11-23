@@ -17,6 +17,7 @@ namespace TranslateHelper
             InitializeComponent();
             doHalfTrans.Checked = Configuration.HalfTran;
             traceOrigin.Checked = Configuration.UseSnd;
+            checkBox1.Checked = Configuration.VerifyTrans;
         }
 
         string cache;
@@ -50,6 +51,11 @@ namespace TranslateHelper
                 }
             }
             listView.EndUpdate();
+
+            if(checkBox1.Checked)
+            {
+                VerifyCache();
+            }
         }
 
         public void varifyTerms(string trsText)
@@ -78,6 +84,34 @@ namespace TranslateHelper
         {
             Configuration.HalfTran = doHalfTrans.Checked;
             if (cache!=null) varifyTerms(cache);
+        }
+
+        internal void updateCache(string transText)
+        {
+            cache = transText;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            VerifyCache();
+        }
+
+        private void VerifyCache()
+        {
+            foreach (var item in listView.Items)
+            {
+                if ((doHalfTrans.Checked ? Helpers.ToHalfShape(cache) : cache).ToLower().Contains(((ListViewItem)item).SubItems[1].Text.ToLower()))
+                {
+                    ((ListViewItem)item).SubItems[2].Text = "是";
+                }
+                else
+                    ((ListViewItem)item).SubItems[2].Text = "否";
+            }
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            Configuration.VerifyTrans = checkBox1.Checked;
         }
     }
 }

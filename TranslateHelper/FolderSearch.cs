@@ -79,10 +79,8 @@ namespace TranslateHelper
         private void searcher_DoWork(object sender, DoWorkEventArgs e)
         {
             object[] args = e.Argument as object[];
-            string[] files = args[0] as string[];
-            SearchProgress sp = args[1] as SearchProgress;
             string searchString = args[2] as string;
-            if (files == null || sp == null) throw new ArgumentException("Parameter type mismatch.");
+            if (!(args[0] is string[] files) || !(args[1] is SearchProgress sp)) throw new ArgumentException("Parameter type mismatch.");
             bool doReplace = false;
             string replaceString = null;
             if(args.Length == 4)

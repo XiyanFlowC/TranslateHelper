@@ -137,6 +137,7 @@ namespace TranslateHelper
 
             Helpers.Logger.Information("Viewer: Creating code-viewer interactive interface.");
             hi = new HtmlInteracting(tc, shower);//创建交互介面
+            hi.ParentForm = this;
             shower.ObjectForScripting = hi;
         }
 
@@ -258,6 +259,7 @@ namespace TranslateHelper
                 tc));
 
             hi = new HtmlInteracting(tc, shower, false);
+            hi.ParentForm = this;
             shower.ObjectForScripting = hi;
         }
 
@@ -302,6 +304,7 @@ namespace TranslateHelper
                 tc));
 
             hi = new HtmlInteracting(tc, shower, false);
+            hi.ParentForm = this;
             shower.ObjectForScripting = hi;
         }
 
@@ -347,40 +350,48 @@ namespace TranslateHelper
 
         private void 来源文件夹查找ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FolderSearch fs = new FolderSearch();
-            fs.DirectoryPath = Configuration.SourceText;
-            fs.EnableReplace = false;
-            fs.Parser = Global.srcParser;
+            FolderSearch fs = new FolderSearch
+            {
+                DirectoryPath = Configuration.SourceText,
+                EnableReplace = false,
+                Parser = Global.srcParser
+            };
 
             fs.ShowDialog();
         }
 
         private void 附属来源文件夹查找ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FolderSearch fs = new FolderSearch();
-            fs.DirectoryPath = Configuration.SecondarySourceText;
-            fs.EnableReplace = false;
-            fs.Parser = Global.srcParser;
+            FolderSearch fs = new FolderSearch
+            {
+                DirectoryPath = Configuration.SecondarySourceText,
+                EnableReplace = false,
+                Parser = Global.srcParser
+            };
 
             fs.ShowDialog();
         }
 
         private void 翻译文件夹查找ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FolderSearch fs = new FolderSearch();
-            fs.DirectoryPath = Configuration.TranslationStorePath;
-            fs.EnableReplace = true;
-            fs.Parser = Global.trsParser;
+            FolderSearch fs = new FolderSearch
+            {
+                DirectoryPath = Configuration.TranslationStorePath,
+                EnableReplace = true,
+                Parser = Global.trsParser
+            };
 
             fs.ShowDialog();
         }
 
         private void 比对文件夹查找ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FolderSearch fs = new FolderSearch();
-            fs.DirectoryPath = Configuration.ComparingTranslationPath;
-            fs.EnableReplace = true;
-            fs.Parser = Global.trsParser;
+            FolderSearch fs = new FolderSearch
+            {
+                DirectoryPath = Configuration.ComparingTranslationPath,
+                EnableReplace = true,
+                Parser = Global.trsParser
+            };
 
             fs.ShowDialog();
         }

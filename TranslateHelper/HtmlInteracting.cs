@@ -11,6 +11,7 @@ namespace TranslateHelper
     [ComVisible(true)]
     public class HtmlInteracting
     {
+        public Form ParentForm { get; set; }
         TextContent content;
         WebBrowser webBrowser;
         SEditor editor;
@@ -68,7 +69,7 @@ namespace TranslateHelper
             editor.OriginalText = content.Content[iid].Dialogue;//TODO:有时间的话改成回调吧。一个编辑窗口跨窗体改数据好丑啊……
             editor.TargetElement = webBrowser.Document.GetElementById("trs_" + id);
             editor.TransText = webBrowser.Document.GetElementById("trs_" + id).InnerHtml;//使编辑器可以修改数据
-            editor.Edit();
+            editor.Edit(ParentForm);
         }
 
         internal void Dispose()

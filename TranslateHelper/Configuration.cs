@@ -30,6 +30,9 @@ namespace TranslateHelper
         public static bool UseSnd { get; internal set; }
         public static bool HalfTran { get; internal set; }
 
+        public static bool VerifyTrans { get; set; }
+        public static bool UsingNEM { get; set; }
+
         public static int LoadConfiguration(string configFilePath)
         {
             BinaryReader eye = new BinaryReader(File.OpenRead(configFilePath));
@@ -70,6 +73,17 @@ namespace TranslateHelper
                     HalfTran = eye.ReadBoolean();
                     UseSnd = eye.ReadBoolean();
                 }
+
+                if(version < 13)
+                {
+                    VerifyTrans = false;
+                    UsingNEM = false;
+                }
+                else
+                {
+                    VerifyTrans = eye.ReadBoolean();
+                    UsingNEM = eye.ReadBoolean();
+                }
             }
             catch (IOException)
             {
@@ -88,7 +102,7 @@ namespace TranslateHelper
 
             try
             {
-                pen.Write(12);
+                pen.Write(13);
 
                 pen.Write(SourceText);
                 pen.Write(SecondarySourceText);
@@ -106,6 +120,9 @@ namespace TranslateHelper
 
                 pen.Write(HalfTran);
                 pen.Write(UseSnd);
+
+                pen.Write(VerifyTrans);
+                pen.Write(UsingNEM);
             }
             catch(IOException)
             {

@@ -112,9 +112,11 @@ namespace TranslateHelper
             }
             if ((fnd & 0x3) != 0x3) return false;
 
-            ParserChoose pc = new ParserChoose();
-            pc.Renders = renders.ToArray();
-            pc.Parsers = parsers.ToArray();
+            ParserChoose pc = new ParserChoose
+            {
+                Renders = renders.ToArray(),
+                Parsers = parsers.ToArray()
+            };
             pc.ShowDialog();
 
             Global.srcParser = pc.sourceParser;
@@ -186,8 +188,8 @@ namespace TranslateHelper
                     {
                         if (DialogResult.Cancel ==
                             MessageBox.Show(err.ToString(), "编译错误", MessageBoxButtons.OKCancel)) return null;
-                        return null;
                     }
+                    return null;
                 }
                 src = cr.CompiledAssembly;
             }

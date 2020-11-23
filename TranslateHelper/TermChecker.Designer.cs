@@ -31,12 +31,13 @@
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.doHalfTrans = new System.Windows.Forms.CheckBox();
+            this.traceOrigin = new System.Windows.Forms.CheckBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.listView = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.traceOrigin = new System.Windows.Forms.CheckBox();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -67,6 +68,7 @@
             this.flowLayoutPanel1.Controls.Add(this.doHalfTrans);
             this.flowLayoutPanel1.Controls.Add(this.traceOrigin);
             this.flowLayoutPanel1.Controls.Add(this.checkBox1);
+            this.flowLayoutPanel1.Controls.Add(this.button1);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
@@ -84,6 +86,17 @@
             this.doHalfTrans.UseVisualStyleBackColor = true;
             this.doHalfTrans.CheckedChanged += new System.EventHandler(this.doHalfTrans_CheckedChanged);
             // 
+            // traceOrigin
+            // 
+            this.traceOrigin.AutoSize = true;
+            this.traceOrigin.Location = new System.Drawing.Point(195, 3);
+            this.traceOrigin.Name = "traceOrigin";
+            this.traceOrigin.Size = new System.Drawing.Size(186, 28);
+            this.traceOrigin.TabIndex = 1;
+            this.traceOrigin.Text = "跟踪第二术语";
+            this.traceOrigin.UseVisualStyleBackColor = true;
+            this.traceOrigin.CheckedChanged += new System.EventHandler(this.traceOrigin_CheckedChanged);
+            // 
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
@@ -93,6 +106,7 @@
             this.checkBox1.TabIndex = 2;
             this.checkBox1.Text = "检查译文术语";
             this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
             // listView
             // 
@@ -124,16 +138,15 @@
             this.columnHeader4.Text = "寻到";
             this.columnHeader4.Width = 40;
             // 
-            // traceOrigin
+            // button1
             // 
-            this.traceOrigin.AutoSize = true;
-            this.traceOrigin.Location = new System.Drawing.Point(195, 3);
-            this.traceOrigin.Name = "traceOrigin";
-            this.traceOrigin.Size = new System.Drawing.Size(186, 28);
-            this.traceOrigin.TabIndex = 1;
-            this.traceOrigin.Text = "跟踪第二术语";
-            this.traceOrigin.UseVisualStyleBackColor = true;
-            this.traceOrigin.CheckedChanged += new System.EventHandler(this.traceOrigin_CheckedChanged);
+            this.button1.Location = new System.Drawing.Point(579, 3);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(157, 40);
+            this.button1.TabIndex = 3;
+            this.button1.Text = "立即检查";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // TermChecker
             // 
@@ -165,5 +178,6 @@
         private System.Windows.Forms.ColumnHeader columnHeader3;
         private System.Windows.Forms.ColumnHeader columnHeader4;
         private System.Windows.Forms.CheckBox traceOrigin;
+        private System.Windows.Forms.Button button1;
     }
 }

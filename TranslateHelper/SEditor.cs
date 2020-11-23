@@ -50,10 +50,25 @@ namespace TranslateHelper
             isNatural = false;
             trans.Text = TargetElement.InnerHtml;
             trans.Font = Configuration.Font;
+
+            if(Configuration.UsingNEM)
+            {
+                UseNEM();
+            }
+            else
+            {
+                UseREM();
+            }
         }
 
         private void 特异控制符模式ToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            UseREM();
+        }
+
+        private void UseREM()//raw text editing mode
+        {
+            Configuration.UsingNEM = false;
             if (特异控制符模式ToolStripMenuItem.Checked) return;
             特异控制符模式ToolStripMenuItem.Checked = true;
             自然模式ToolStripMenuItem.Checked = false;
@@ -63,6 +78,12 @@ namespace TranslateHelper
 
         private void 自然模式ToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            Configuration.UsingNEM = true;
+            UseNEM();
+        }
+
+        private void UseNEM()//natral text editing mode
+        {
             if (自然模式ToolStripMenuItem.Checked) return;
             自然模式ToolStripMenuItem.Checked = true;
             特异控制符模式ToolStripMenuItem.Checked = false;
@@ -70,34 +91,36 @@ namespace TranslateHelper
             TransText = TransText;
         }
 
-        private void 插入IMToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            trans.Text += "IMXX";
-        }
+        //private void 插入IMToolStripMenuItem_Click(object sender, EventArgs e)
+        //{
+        //    trans.Text += "IMXX";
+        //}
 
-        internal void Edit()
+        internal void Edit(Form parentForm)
         {
             if (tck != null) tck.CheckTerms(OriginalText);
-            if(!Visible) Show();
+            if(!Visible) Show(parentForm);
             Focus();
         }
 
-        private void 插入SPToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            trans.Text += "SPXX";
-        }
+        //private void 插入SPToolStripMenuItem_Click(object sender, EventArgs e)
+        //{
+        //    trans.Text += "SPXX";
+        //}
 
-        private void 插入CRToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            trans.Text += "CR";
-        }
+        //private void 插入CRToolStripMenuItem_Click(object sender, EventArgs e)
+        //{
+        //    trans.Text += "CR";
+        //}
 
         private void trans_TextChanged(object sender, EventArgs e)
         {
             TargetElement.InnerHtml = TransText;
-            if(tck != null && tck.AlwaysVerify)
+            if(tck != null)
             {
-                tck.varifyTerms(TransText);
+                if (tck.AlwaysVerify)
+                    tck.varifyTerms(TransText);
+                else tck.updateCache(TransText);
             }
             //if(tck != null)tck.CheckTerms(OriginalText);
         }
@@ -113,6 +136,7 @@ namespace TranslateHelper
             {
                 tck = new TermChecker();
                 tck.CheckTerms(OriginalText);
+                if (tck.AlwaysVerify) tck.varifyTerms(TransText);
             }
 
             if (!tck.Visible) tck.Show(this);
