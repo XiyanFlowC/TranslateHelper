@@ -132,15 +132,24 @@ namespace TranslateHelper
 
         private void 专有名词检查ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (tck == null || tck.IsDisposed)
+            try
             {
-                tck = new TermChecker();
-                tck.CheckTerms(OriginalText);
-                if (tck.AlwaysVerify) tck.varifyTerms(TransText);
-            }
+                if (tck == null || tck.IsDisposed)
+                {
+                    tck = new TermChecker();
+                    tck.CheckTerms(OriginalText);
+                    if (tck.AlwaysVerify) tck.varifyTerms(TransText);
+                }
 
-            if (!tck.Visible) tck.Show(this);
-            else tck.Focus();
+                if (!tck.Visible) tck.Show(this);
+                else tck.Focus();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("显示检查器时发生异常。");
+                Helpers.Logger.Error("Error occurs when showing term checker.");
+                Helpers.Logger.Debug(ex.ToString());
+            }
         }
     }
 }

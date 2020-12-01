@@ -98,6 +98,7 @@ namespace TranslateHelper
 
         private void VerifyCache()
         {
+            if (cache == null) return;
             foreach (var item in listView.Items)
             {
                 if ((doHalfTrans.Checked ? Helpers.ToHalfShape(cache) : cache).ToLower().Contains(((ListViewItem)item).SubItems[1].Text.ToLower()))
