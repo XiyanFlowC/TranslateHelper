@@ -148,7 +148,7 @@ namespace TranslateHelper
 
         private void 关于ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("通用文本编辑器 Ver.1.1\n最初为AT而编写。\n作者：巇岩流云", "关于");
+            MessageBox.Show("通用文本编辑器 Ver.1.2\n最初为AT而编写。\n作者：巇岩流云", "关于");
         }
 
         private void 转到ToolStripMenuItem_Click(object sender, EventArgs e)

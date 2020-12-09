@@ -21,6 +21,21 @@ namespace TranslateHelper
         public SEditor()
         {
             InitializeComponent();
+            isNatural = false;
+            //trans.Text = TargetElement.InnerHtml;
+            trans.Font = Configuration.Font;
+            TransText = "";
+
+            if (Configuration.UsingNEM)
+            {
+                isNatural = true;
+                自然模式ToolStripMenuItem.Checked = true;
+                特异控制符模式ToolStripMenuItem.Checked = false;
+            }
+            else
+            {
+                isNatural = false;
+            }
         }
 
         bool isNatural;
@@ -55,18 +70,7 @@ namespace TranslateHelper
 
         private void Edit_Load(object sender, EventArgs e)
         {
-            isNatural = false;
-            //trans.Text = TargetElement.InnerHtml;
-            trans.Font = Configuration.Font;
-
-            if(Configuration.UsingNEM)
-            {
-                UseNEM();
-            }
-            else
-            {
-                UseREM();
-            }
+            
         }
 
         private void 特异控制符模式ToolStripMenuItem_Click(object sender, EventArgs e)
