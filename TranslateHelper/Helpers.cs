@@ -41,6 +41,24 @@ namespace TranslateHelper
             Configuration.SaveConfiguration("./cfg.bin");
         }
 
+        private static void CopyDir(string src, string dst)
+        {
+            string[] files = Directory.GetFiles(src, "*.*");
+
+            foreach (var file in files)
+            {
+                File.Copy(file, dst + Path.GetFileName(dst));
+            }
+
+            string[] dirs = Directory.GetDirectories(src);
+
+            foreach(var dir in dirs)
+            {
+                string dn = dir.Substring(dir.LastIndexOfAny(new char[] { '\\', '/' }));
+                CopyDir(src + dir, dst + dir);
+            }
+        }
+
         public static void ReloadPlugin()
         {
             ChoosePlugin cp = new ChoosePlugin();
@@ -52,6 +70,13 @@ namespace TranslateHelper
                 MessageBox.Show("所选插件或解析器无效。");
                 cp.ShowDialog();
                 Configuration.ParserPath = cp.SelectedPlugin;
+            }
+            if(Directory.Exists(cp.SelectedPlugin + "/Html/"))
+            {
+                if(DialogResult.No != MessageBox.Show("当前所选插件有推荐的视图组件。需要同时应用吗？（Html文件夹将被覆写）", "提示", MessageBoxButtons.YesNo, MessageBoxIcon.Question))
+                {
+                    CopyDir(cp.SelectedPlugin + "/Html/", Application.StartupPath + "/Html/");
+                }
             }
             cp.Close();
         }

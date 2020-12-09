@@ -10,6 +10,10 @@ using System.Windows.Forms;
 
 namespace TranslateHelper
 {
+
+    public delegate void TranslatingHandler(string text);
+    public delegate string StringCodec(string text);
+
     public partial class SEditor : Form
     {
         TermChecker tck;
@@ -20,23 +24,27 @@ namespace TranslateHelper
         }
 
         bool isNatural;
-        public HtmlElement TargetElement { get; set; }
+        //public HtmlElement TargetElement { get; set; }
+        public TranslatingHandler OnTranslationChanged;
+        public StringCodec Encoder, Decoder;
+
         public string OriginalText { get; set; }
         public string TransText
         {
             get
             {
-                if(isNatural)
+                if (isNatural)
                 {
-                    return trans.Text.Replace(Environment.NewLine, "CR");
+                    return Encoder(trans.Text);
                 }
-                else return trans.Text;
+                else
+                    return trans.Text;
             }
             set
             {
-                if(isNatural)//TODO:支持脚本的人性化控制符系统（包括get和set）
+                if (isNatural)//TO DO:支持脚本的人性化控制符系统（包括get和set）
                 {
-                    trans.Text = value.Replace("CR", Environment.NewLine);
+                    trans.Text = Decoder(value);
                 }
                 else
                 {
@@ -48,7 +56,7 @@ namespace TranslateHelper
         private void Edit_Load(object sender, EventArgs e)
         {
             isNatural = false;
-            trans.Text = TargetElement.InnerHtml;
+            //trans.Text = TargetElement.InnerHtml;
             trans.Font = Configuration.Font;
 
             if(Configuration.UsingNEM)
@@ -115,7 +123,8 @@ namespace TranslateHelper
 
         private void trans_TextChanged(object sender, EventArgs e)
         {
-            TargetElement.InnerHtml = TransText;
+            OnTranslationChanged(TransText);
+            //TargetElement.InnerHtml = TransText;
             if(tck != null)
             {
                 if (tck.AlwaysVerify)

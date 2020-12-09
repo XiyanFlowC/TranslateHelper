@@ -61,14 +61,34 @@ namespace TranslateHelper
             content.SaveTranslation(path);
         }
 
+        protected HtmlElement targetElement;
+
+        public void TranslationUpdate(string text)
+        {
+            targetElement.InnerHtml = text;
+        }
+
+        public string StringEncode(string input)
+        {
+            return webBrowser.Document.InvokeScript("stringEncoder", new object[] { input }) as string;
+        }
+
+        public string StringDecode(string input)
+        {
+            return webBrowser.Document.InvokeScript("stringDecoder", new object[] { input }) as string;
+        }
+
         public void Edit(string id)
         {
             changed = true;
             if (editor == null || editor.IsDisposed) editor = new SEditor();//如果上个编辑窗口被关闭
             int iid = int.Parse(id);
-            editor.OriginalText = content.Content[iid].Dialogue;//TODO:有时间的话改成回调吧。一个编辑窗口跨窗体改数据好丑啊……
-            editor.TargetElement = webBrowser.Document.GetElementById("trs_" + id);
-            editor.TransText = webBrowser.Document.GetElementById("trs_" + id).InnerHtml;//使编辑器可以修改数据
+            editor.OriginalText = content.Content[iid].Dialogue;//TO DO:有时间的话改成回调吧。一个编辑窗口跨窗体改数据好丑啊……
+            targetElement = webBrowser.Document.GetElementById("trs_" + id);
+            editor.OnTranslationChanged = new TranslatingHandler(TranslationUpdate);//使编辑器可以修改数据
+            editor.Decoder = new StringCodec(StringDecode);
+            editor.Encoder = new StringCodec(StringEncode);
+            editor.TransText = webBrowser.Document.GetElementById("trs_" + id).InnerHtml;
             editor.Edit(ParentForm);
         }
 

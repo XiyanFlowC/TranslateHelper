@@ -48,7 +48,7 @@
             this.工具ToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(949, 42);
+            this.menuStrip1.Size = new System.Drawing.Size(949, 39);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -58,7 +58,7 @@
             this.特异控制符模式ToolStripMenuItem,
             this.自然模式ToolStripMenuItem});
             this.模式ToolStripMenuItem.Name = "模式ToolStripMenuItem";
-            this.模式ToolStripMenuItem.Size = new System.Drawing.Size(121, 38);
+            this.模式ToolStripMenuItem.Size = new System.Drawing.Size(121, 35);
             this.模式ToolStripMenuItem.Text = "模式(&M)";
             // 
             // 特异控制符模式ToolStripMenuItem
@@ -86,7 +86,7 @@
             this.专有名词检查ToolStripMenuItem,
             this.以原始文本覆盖ToolStripMenuItem});
             this.工具ToolStripMenuItem.Name = "工具ToolStripMenuItem";
-            this.工具ToolStripMenuItem.Size = new System.Drawing.Size(112, 38);
+            this.工具ToolStripMenuItem.Size = new System.Drawing.Size(112, 35);
             this.工具ToolStripMenuItem.Text = "工具(&T)";
             // 
             // 专有名词检查ToolStripMenuItem
@@ -108,10 +108,10 @@
             // trans
             // 
             this.trans.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.trans.Location = new System.Drawing.Point(0, 42);
+            this.trans.Location = new System.Drawing.Point(0, 39);
             this.trans.Multiline = true;
             this.trans.Name = "trans";
-            this.trans.Size = new System.Drawing.Size(949, 268);
+            this.trans.Size = new System.Drawing.Size(949, 271);
             this.trans.TabIndex = 1;
             this.trans.TextChanged += new System.EventHandler(this.trans_TextChanged);
             // 

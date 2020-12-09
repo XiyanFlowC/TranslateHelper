@@ -11,4 +11,12 @@ function startEdit(id) {
     window.external.Edit(id);
 }
 
+function stringEncoder(str) {
+    return str.replace("\r\n", "CR");
+}
+
+function stringDecoder(str) {
+    return str.replace("CR", "\r\n");
+}
+
 var oldid = 0;
