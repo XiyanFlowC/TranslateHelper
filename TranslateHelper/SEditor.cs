@@ -84,8 +84,10 @@ namespace TranslateHelper
             if (特异控制符模式ToolStripMenuItem.Checked) return;
             特异控制符模式ToolStripMenuItem.Checked = true;
             自然模式ToolStripMenuItem.Checked = false;
+            
+            var text = TransText;
             isNatural = false;
-            TransText = TransText;
+            TransText = text;
         }
 
         private void 自然模式ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -99,8 +101,9 @@ namespace TranslateHelper
             if (自然模式ToolStripMenuItem.Checked) return;
             自然模式ToolStripMenuItem.Checked = true;
             特异控制符模式ToolStripMenuItem.Checked = false;
+            var text = TransText;
             isNatural = true;
-            TransText = TransText;
+            TransText = text;
         }
 
         //private void 插入IMToolStripMenuItem_Click(object sender, EventArgs e)

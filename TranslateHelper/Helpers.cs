@@ -47,7 +47,7 @@ namespace TranslateHelper
 
             foreach (var file in files)
             {
-                File.Copy(file, dst + Path.GetFileName(dst));
+                File.Copy(file, dst + '/' + Path.GetFileName(file), true);
             }
 
             string[] dirs = Directory.GetDirectories(src);
@@ -55,7 +55,7 @@ namespace TranslateHelper
             foreach(var dir in dirs)
             {
                 string dn = dir.Substring(dir.LastIndexOfAny(new char[] { '\\', '/' }));
-                CopyDir(src + dir, dst + dir);
+                CopyDir(src + dn, dst + dn);
             }
         }
 
@@ -75,7 +75,7 @@ namespace TranslateHelper
             {
                 if(DialogResult.No != MessageBox.Show("当前所选插件有推荐的视图组件。需要同时应用吗？（Html文件夹将被覆写）", "提示", MessageBoxButtons.YesNo, MessageBoxIcon.Question))
                 {
-                    CopyDir(cp.SelectedPlugin + "/Html/", Application.StartupPath + "/Html/");
+                    CopyDir(cp.SelectedPlugin + "/Html", Application.StartupPath + "/Html");
                 }
             }
             cp.Close();
