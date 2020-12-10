@@ -35,9 +35,10 @@
             this.工具ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.专有名词检查ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.以原始文本覆盖ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.trans = new System.Windows.Forms.TextBox();
             this.控制CToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.下一条NToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.trans = new System.Windows.Forms.TextBox();
+            this.关闭窗口CToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -51,7 +52,7 @@
             this.控制CToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(949, 42);
+            this.menuStrip1.Size = new System.Drawing.Size(949, 39);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -61,7 +62,7 @@
             this.特异控制符模式ToolStripMenuItem,
             this.自然模式ToolStripMenuItem});
             this.模式ToolStripMenuItem.Name = "模式ToolStripMenuItem";
-            this.模式ToolStripMenuItem.Size = new System.Drawing.Size(121, 35);
+            this.模式ToolStripMenuItem.Size = new System.Drawing.Size(121, 38);
             this.模式ToolStripMenuItem.Text = "模式(&M)";
             // 
             // 特异控制符模式ToolStripMenuItem
@@ -89,7 +90,7 @@
             this.专有名词检查ToolStripMenuItem,
             this.以原始文本覆盖ToolStripMenuItem});
             this.工具ToolStripMenuItem.Name = "工具ToolStripMenuItem";
-            this.工具ToolStripMenuItem.Size = new System.Drawing.Size(112, 35);
+            this.工具ToolStripMenuItem.Size = new System.Drawing.Size(112, 38);
             this.工具ToolStripMenuItem.Text = "工具(&T)";
             // 
             // 专有名词检查ToolStripMenuItem
@@ -108,20 +109,11 @@
             this.以原始文本覆盖ToolStripMenuItem.Text = "以原始文本覆盖(&R)";
             this.以原始文本覆盖ToolStripMenuItem.Click += new System.EventHandler(this.以原始文本覆盖ToolStripMenuItem_Click);
             // 
-            // trans
-            // 
-            this.trans.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.trans.Location = new System.Drawing.Point(0, 42);
-            this.trans.Multiline = true;
-            this.trans.Name = "trans";
-            this.trans.Size = new System.Drawing.Size(949, 268);
-            this.trans.TabIndex = 1;
-            this.trans.TextChanged += new System.EventHandler(this.trans_TextChanged);
-            // 
             // 控制CToolStripMenuItem
             // 
             this.控制CToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.下一条NToolStripMenuItem});
+            this.下一条NToolStripMenuItem,
+            this.关闭窗口CToolStripMenuItem});
             this.控制CToolStripMenuItem.Name = "控制CToolStripMenuItem";
             this.控制CToolStripMenuItem.Size = new System.Drawing.Size(114, 38);
             this.控制CToolStripMenuItem.Text = "控制(&C)";
@@ -129,10 +121,28 @@
             // 下一条NToolStripMenuItem
             // 
             this.下一条NToolStripMenuItem.Name = "下一条NToolStripMenuItem";
-            this.下一条NToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.J)));
-            this.下一条NToolStripMenuItem.Size = new System.Drawing.Size(359, 44);
+            this.下一条NToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Return)));
+            this.下一条NToolStripMenuItem.Size = new System.Drawing.Size(387, 44);
             this.下一条NToolStripMenuItem.Text = "下一条(&N)";
             this.下一条NToolStripMenuItem.Click += new System.EventHandler(this.下一条NToolStripMenuItem_Click);
+            // 
+            // trans
+            // 
+            this.trans.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.trans.Location = new System.Drawing.Point(0, 39);
+            this.trans.Multiline = true;
+            this.trans.Name = "trans";
+            this.trans.Size = new System.Drawing.Size(949, 271);
+            this.trans.TabIndex = 1;
+            this.trans.TextChanged += new System.EventHandler(this.trans_TextChanged);
+            // 
+            // 关闭窗口CToolStripMenuItem
+            // 
+            this.关闭窗口CToolStripMenuItem.Name = "关闭窗口CToolStripMenuItem";
+            this.关闭窗口CToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.W)));
+            this.关闭窗口CToolStripMenuItem.Size = new System.Drawing.Size(387, 44);
+            this.关闭窗口CToolStripMenuItem.Text = "关闭窗口(&C)";
+            this.关闭窗口CToolStripMenuItem.Click += new System.EventHandler(this.关闭窗口CToolStripMenuItem_Click);
             // 
             // SEditor
             // 
@@ -165,5 +175,6 @@
         private System.Windows.Forms.ToolStripMenuItem 以原始文本覆盖ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 控制CToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 下一条NToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 关闭窗口CToolStripMenuItem;
     }
 }

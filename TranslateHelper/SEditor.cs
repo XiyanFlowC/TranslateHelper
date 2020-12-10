@@ -156,6 +156,11 @@ namespace TranslateHelper
             OnNextItem();
         }
 
+        private void 关闭窗口CToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
         private void 专有名词检查ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             try

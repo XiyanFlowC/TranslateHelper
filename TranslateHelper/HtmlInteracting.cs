@@ -81,7 +81,7 @@ namespace TranslateHelper
 
         void NextEdit()
         {
-            Edit((editingID + 1).ToString());
+            webBrowser.Document.InvokeScript("startEdit", new object[] { editingID + 1 });
         }
 
         public void Edit(string id)
