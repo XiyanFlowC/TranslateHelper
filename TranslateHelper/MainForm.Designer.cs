@@ -102,7 +102,7 @@
             this.toolStripSeparator2,
             this.退出ToolStripMenuItem});
             this.文件ToolStripMenuItem.Name = "文件ToolStripMenuItem";
-            this.文件ToolStripMenuItem.Size = new System.Drawing.Size(111, 35);
+            this.文件ToolStripMenuItem.Size = new System.Drawing.Size(111, 38);
             this.文件ToolStripMenuItem.Text = "文件(&F)";
             // 
             // 保存ToolStripMenuItem
@@ -141,7 +141,7 @@
             this.转到ToolStripMenuItem,
             this.查找与替换ToolStripMenuItem});
             this.编辑ToolStripMenuItem.Name = "编辑ToolStripMenuItem";
-            this.编辑ToolStripMenuItem.Size = new System.Drawing.Size(111, 35);
+            this.编辑ToolStripMenuItem.Size = new System.Drawing.Size(111, 38);
             this.编辑ToolStripMenuItem.Text = "编辑(&E)";
             // 
             // 转到ToolStripMenuItem
@@ -167,7 +167,7 @@
             this.来源比较ToolStripMenuItem,
             this.合并比较ToolStripMenuItem});
             this.视图ToolStripMenuItem.Name = "视图ToolStripMenuItem";
-            this.视图ToolStripMenuItem.Size = new System.Drawing.Size(114, 35);
+            this.视图ToolStripMenuItem.Size = new System.Drawing.Size(114, 38);
             this.视图ToolStripMenuItem.Text = "视图(&V)";
             // 
             // 其它来源ToolStripMenuItem
@@ -212,7 +212,7 @@
             this.toolStripSeparator5,
             this.删除日志ToolStripMenuItem});
             this.工具ToolStripMenuItem.Name = "工具ToolStripMenuItem";
-            this.工具ToolStripMenuItem.Size = new System.Drawing.Size(112, 35);
+            this.工具ToolStripMenuItem.Size = new System.Drawing.Size(112, 38);
             this.工具ToolStripMenuItem.Text = "工具(&T)";
             // 
             // 字体ToolStripMenuItem
@@ -294,7 +294,7 @@
             this.toolStripSeparator3,
             this.关于ToolStripMenuItem});
             this.帮助ToolStripMenuItem.Name = "帮助ToolStripMenuItem";
-            this.帮助ToolStripMenuItem.Size = new System.Drawing.Size(82, 35);
+            this.帮助ToolStripMenuItem.Size = new System.Drawing.Size(82, 38);
             this.帮助ToolStripMenuItem.Text = "帮助";
             // 
             // 帮助ToolStripMenuItem1

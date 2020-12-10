@@ -32,6 +32,7 @@ function stringEncoder(str) {
                 i ++;
                 ans += '##';
                 lcf = false;
+                continue;
             }
         }
 

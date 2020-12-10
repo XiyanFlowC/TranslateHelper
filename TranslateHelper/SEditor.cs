@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace TranslateHelper
 {
-
+    public delegate void ActionExecuter();
     public delegate void TranslatingHandler(string text);
     public delegate string StringCodec(string text);
 
@@ -42,6 +42,7 @@ namespace TranslateHelper
         //public HtmlElement TargetElement { get; set; }
         public TranslatingHandler OnTranslationChanged;
         public StringCodec Encoder, Decoder;
+        public ActionExecuter OnNextItem;
 
         public string OriginalText { get; set; }
         public string TransText
@@ -144,6 +145,15 @@ namespace TranslateHelper
         private void 以原始文本覆盖ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             TransText = OriginalText;
+        }
+
+        private void 下一条NToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if(OnNextItem == null)
+            {
+                MessageBox.Show("不支持");
+            }
+            OnNextItem();
         }
 
         private void 专有名词检查ToolStripMenuItem_Click(object sender, EventArgs e)

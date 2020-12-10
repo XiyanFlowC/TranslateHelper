@@ -17,6 +17,7 @@ namespace TranslateHelper
         SEditor editor;
         readonly bool enableSave;
         bool changed = false;
+        int editingID;
 
         public TextContent Content 
         { 
@@ -78,16 +79,34 @@ namespace TranslateHelper
             return webBrowser.Document.InvokeScript("stringDecoder", new object[] { input }) as string;
         }
 
+        void NextEdit()
+        {
+            Edit((editingID + 1).ToString());
+        }
+
         public void Edit(string id)
         {
             changed = true;
-            if (editor == null || editor.IsDisposed) editor = new SEditor();//如果上个编辑窗口被关闭
+            if (editor == null || editor.IsDisposed)
+            {
+                editor = new SEditor();//如果上个编辑窗口被关闭
+                editor.OnNextItem = new ActionExecuter(NextEdit);
+                editor.OnTranslationChanged = new TranslatingHandler(TranslationUpdate);//使编辑器可以修改数据
+                editor.Decoder = new StringCodec(StringDecode);
+                editor.Encoder = new StringCodec(StringEncode);
+            }
             int iid = int.Parse(id);
+
+            if(iid >= content.Content.Length)
+            {
+                if (DialogResult.No == MessageBox.Show("已达文件尾端，现在保存吗？", "保存", MessageBoxButtons.YesNo, MessageBoxIcon.Question)) return;
+                Save();
+                return;
+            }
+            editingID = iid;
+
             editor.OriginalText = content.Content[iid].Dialogue;//TO DO:有时间的话改成回调吧。一个编辑窗口跨窗体改数据好丑啊……
             targetElement = webBrowser.Document.GetElementById("trs_" + id);
-            editor.OnTranslationChanged = new TranslatingHandler(TranslationUpdate);//使编辑器可以修改数据
-            editor.Decoder = new StringCodec(StringDecode);
-            editor.Encoder = new StringCodec(StringEncode);
             editor.TransText = webBrowser.Document.GetElementById("trs_" + id).InnerHtml;
             editor.Edit(ParentForm);
         }

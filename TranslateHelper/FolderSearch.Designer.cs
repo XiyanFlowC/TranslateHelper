@@ -34,15 +34,15 @@
             this.content = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.searcher = new System.ComponentModel.BackgroundWorker();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.close = new System.Windows.Forms.Button();
+            this.search = new System.Windows.Forms.Button();
+            this.replace = new System.Windows.Forms.Button();
             this.replacement = new System.Windows.Forms.TextBox();
             this.searchText = new System.Windows.Forms.TextBox();
             this.targetDirectory = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.close = new System.Windows.Forms.Button();
-            this.search = new System.Windows.Forms.Button();
-            this.replace = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -58,9 +58,9 @@
             this.resultShower.Dock = System.Windows.Forms.DockStyle.Fill;
             this.resultShower.HideSelection = false;
             this.resultShower.Location = new System.Drawing.Point(0, 0);
-            this.resultShower.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.resultShower.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.resultShower.Name = "resultShower";
-            this.resultShower.Size = new System.Drawing.Size(389, 265);
+            this.resultShower.Size = new System.Drawing.Size(778, 530);
             this.resultShower.TabIndex = 9;
             this.resultShower.UseCompatibleStateImageBehavior = false;
             this.resultShower.View = System.Windows.Forms.View.Details;
@@ -90,6 +90,7 @@
             // 
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer1.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer1.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.splitContainer1.Name = "splitContainer1";
             this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
@@ -108,71 +109,17 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.resultShower);
-            this.splitContainer1.Size = new System.Drawing.Size(389, 405);
-            this.splitContainer1.SplitterDistance = 136;
+            this.splitContainer1.Size = new System.Drawing.Size(778, 810);
+            this.splitContainer1.SplitterDistance = 272;
+            this.splitContainer1.SplitterWidth = 8;
             this.splitContainer1.TabIndex = 10;
-            // 
-            // replacement
-            // 
-            this.replacement.Location = new System.Drawing.Point(86, 61);
-            this.replacement.Margin = new System.Windows.Forms.Padding(2);
-            this.replacement.Name = "replacement";
-            this.replacement.Size = new System.Drawing.Size(292, 21);
-            this.replacement.TabIndex = 11;
-            // 
-            // searchText
-            // 
-            this.searchText.Location = new System.Drawing.Point(86, 36);
-            this.searchText.Margin = new System.Windows.Forms.Padding(2);
-            this.searchText.Name = "searchText";
-            this.searchText.Size = new System.Drawing.Size(292, 21);
-            this.searchText.TabIndex = 10;
-            // 
-            // targetDirectory
-            // 
-            this.targetDirectory.Location = new System.Drawing.Point(86, 11);
-            this.targetDirectory.Margin = new System.Windows.Forms.Padding(2);
-            this.targetDirectory.Name = "targetDirectory";
-            this.targetDirectory.ReadOnly = true;
-            this.targetDirectory.Size = new System.Drawing.Size(292, 21);
-            this.targetDirectory.TabIndex = 9;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(11, 64);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(29, 12);
-            this.label3.TabIndex = 8;
-            this.label3.Text = "替换";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(11, 39);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(29, 12);
-            this.label2.TabIndex = 7;
-            this.label2.Text = "查找";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(11, 14);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(29, 12);
-            this.label1.TabIndex = 6;
-            this.label1.Text = "目标";
             // 
             // close
             // 
-            this.close.Location = new System.Drawing.Point(11, 86);
-            this.close.Margin = new System.Windows.Forms.Padding(2);
+            this.close.Location = new System.Drawing.Point(22, 172);
+            this.close.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.close.Name = "close";
-            this.close.Size = new System.Drawing.Size(82, 31);
+            this.close.Size = new System.Drawing.Size(164, 62);
             this.close.TabIndex = 14;
             this.close.Text = "关闭";
             this.close.UseVisualStyleBackColor = true;
@@ -180,10 +127,10 @@
             // 
             // search
             // 
-            this.search.Location = new System.Drawing.Point(296, 86);
-            this.search.Margin = new System.Windows.Forms.Padding(2);
+            this.search.Location = new System.Drawing.Point(592, 172);
+            this.search.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.search.Name = "search";
-            this.search.Size = new System.Drawing.Size(82, 31);
+            this.search.Size = new System.Drawing.Size(164, 62);
             this.search.TabIndex = 13;
             this.search.Text = "查找";
             this.search.UseVisualStyleBackColor = true;
@@ -191,22 +138,77 @@
             // 
             // replace
             // 
-            this.replace.Location = new System.Drawing.Point(210, 86);
-            this.replace.Margin = new System.Windows.Forms.Padding(2);
+            this.replace.Location = new System.Drawing.Point(420, 172);
+            this.replace.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.replace.Name = "replace";
-            this.replace.Size = new System.Drawing.Size(82, 31);
+            this.replace.Size = new System.Drawing.Size(164, 62);
             this.replace.TabIndex = 12;
             this.replace.Text = "替换";
             this.replace.UseVisualStyleBackColor = true;
             this.replace.Click += new System.EventHandler(this.replace_Click);
             // 
+            // replacement
+            // 
+            this.replacement.Location = new System.Drawing.Point(172, 122);
+            this.replacement.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.replacement.Name = "replacement";
+            this.replacement.Size = new System.Drawing.Size(580, 35);
+            this.replacement.TabIndex = 11;
+            // 
+            // searchText
+            // 
+            this.searchText.Location = new System.Drawing.Point(172, 72);
+            this.searchText.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.searchText.Name = "searchText";
+            this.searchText.Size = new System.Drawing.Size(580, 35);
+            this.searchText.TabIndex = 10;
+            // 
+            // targetDirectory
+            // 
+            this.targetDirectory.Location = new System.Drawing.Point(172, 22);
+            this.targetDirectory.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.targetDirectory.Name = "targetDirectory";
+            this.targetDirectory.ReadOnly = true;
+            this.targetDirectory.Size = new System.Drawing.Size(580, 35);
+            this.targetDirectory.TabIndex = 9;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(22, 128);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(58, 24);
+            this.label3.TabIndex = 8;
+            this.label3.Text = "替换";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(22, 78);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(58, 24);
+            this.label2.TabIndex = 7;
+            this.label2.Text = "查找";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(22, 28);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(58, 24);
+            this.label1.TabIndex = 6;
+            this.label1.Text = "目标";
+            // 
             // FolderSearch
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(389, 405);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(192F, 192F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+            this.ClientSize = new System.Drawing.Size(778, 810);
             this.Controls.Add(this.splitContainer1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "FolderSearch";
             this.Text = "文件夹搜索";
             this.Load += new System.EventHandler(this.FolderSearch_Load);
