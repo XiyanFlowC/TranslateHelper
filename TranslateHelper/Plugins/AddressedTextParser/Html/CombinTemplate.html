@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>@[FileName]</title>
+    <script type="text/javascript" src="@[HtmlPath]/js/scripts.js"></script>
+    <script type="text/javascript" src="@[HtmlPath]/js/previewer.js"></script>
+    <script>
+        function cpy(src, dst)
+        {
+            document.getElementById(dst).innerHTML = document.getElementById(src).innerHTML;
+        }
+    </script>
+</head>
+<body style="background-color:#fcf9f7;">
+    <h1>@[FileName] - 翻译合并</h1>
+    <hr />
+    <table>
+        <thead>
+            <tr>
+                <td style="width:33%">
+                    旁支文本
+                </td>
+                <td style="width:33%">
+                    主支文本
+                </td>
+                <td style="width:33%">
+                    接纳的
+                </td>
+            </tr>
+        </thead>
+        <tbody>
+            @[ContentAsTable]
+        </tbody>
+    </table>
+    <hr />
+    <button onclick="window.external.Save()">保存</button>
+    <div style="height: 4in;"></div>
+</body>
+</html>

@@ -15,8 +15,6 @@ namespace TXTSrcParser
 
         public TXTSrcHtmlRender()
         {
-            //MessageBox.Show("Initing...");
-            //LoadNarrators("./narrator.txt");
         }
 
         public string GenerateItemHtml(string template, int id, DialogueItem b_data, DialogueItem b_trsd)
@@ -30,22 +28,5 @@ namespace TXTSrcParser
                    .Replace("@[TranslateText]", trsd.Dialogue);
                    //.Replace("@[ID]", data.Length.ToString());
         }
-
-        // private string ResolveNID(int narrator)
-        // {
-        //     if (!Narrator.ContainsKey(narrator)) return "未索引";
-        //     return Narrator[narrator];
-        // }
-
-        // private void LoadNarrators(string v)
-        // {
-        //     string[] lines = File.ReadAllLines(v);
-        //     Narrator = new System.Collections.Generic.Dictionary<int, string>();
-        //     foreach(var line in lines)
-        //     {
-        //         string[] f = line.Split(',');
-        //         Narrator[int.Parse(f[0])] = f[1];
-        //     }
-        // }
     }
 }

@@ -136,17 +136,17 @@
             // columnHeader1
             // 
             this.columnHeader1.Text = "原文";
-            this.columnHeader1.Width = 150;
+            this.columnHeader1.Width = 331;
             // 
             // columnHeader3
             // 
             this.columnHeader3.Text = "译文";
-            this.columnHeader3.Width = 150;
+            this.columnHeader3.Width = 365;
             // 
             // columnHeader4
             // 
             this.columnHeader4.Text = "寻到";
-            this.columnHeader4.Width = 40;
+            this.columnHeader4.Width = 69;
             // 
             // TermChecker
             // 

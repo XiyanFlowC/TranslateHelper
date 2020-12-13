@@ -26,6 +26,8 @@ namespace TranslateHelper
             trans.Font = Configuration.Font;
             TransText = "";
 
+            到达文件尾端时询问是否保存ToolStripMenuItem.Checked = Configuration.AskBeforeSave;
+
             if (Configuration.UsingNEM)
             {
                 isNatural = true;
@@ -159,6 +161,12 @@ namespace TranslateHelper
         private void 关闭窗口CToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void 到达文件尾端时询问是否保存ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            到达文件尾端时询问是否保存ToolStripMenuItem.Checked = !到达文件尾端时询问是否保存ToolStripMenuItem.Checked;
+            Configuration.AskBeforeSave = 到达文件尾端时询问是否保存ToolStripMenuItem.Checked;
         }
 
         private void 专有名词检查ToolStripMenuItem_Click(object sender, EventArgs e)

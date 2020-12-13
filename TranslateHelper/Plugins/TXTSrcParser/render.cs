@@ -52,6 +52,11 @@ namespace TXTSrcParser
 
         private void LoadNarrators(string v)
         {
+            if(!File.Exists(v))
+            {
+                MessageBox.Show("找不到narrator.txt文件。渲染器初始化失败。");
+                Narrator = new System.Collections.Generic.Dictionary<int, string>();
+            }
             string[] lines = File.ReadAllLines(v);
             Narrator = new System.Collections.Generic.Dictionary<int, string>();
             foreach(var line in lines)

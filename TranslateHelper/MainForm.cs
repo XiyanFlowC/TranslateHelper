@@ -136,7 +136,7 @@ namespace TranslateHelper
                 tc));
 
             Helpers.Logger.Information("Viewer: Creating code-viewer interactive interface.");
-            hi = new HtmlInteracting(tc, shower);//创建交互介面
+            hi = new HtmlInteracting(tc, shower, statusLabel);//创建交互介面
             hi.ParentForm = this;
             shower.ObjectForScripting = hi;
         }
@@ -144,6 +144,7 @@ namespace TranslateHelper
         private void 其它来源ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Configuration.SwitchSource();
+            statusLabel.Text = "已交换来源";
         }
 
         private void 关于ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -258,7 +259,7 @@ namespace TranslateHelper
                 "./Html/CompareItemTemplate.txt",
                 tc));
 
-            hi = new HtmlInteracting(tc, shower, false);
+            hi = new HtmlInteracting(tc, shower, statusLabel, false);
             hi.ParentForm = this;
             shower.ObjectForScripting = hi;
         }
@@ -303,7 +304,7 @@ namespace TranslateHelper
                 "./Html/CombinItemTemplate.txt",
                 tc));
 
-            hi = new HtmlInteracting(tc, shower, false);
+            hi = new HtmlInteracting(tc, shower, statusLabel);
             hi.ParentForm = this;
             shower.ObjectForScripting = hi;
         }
@@ -394,6 +395,41 @@ namespace TranslateHelper
             };
 
             fs.ShowDialog();
+        }
+
+        private void 标准视图ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            statusLabel.Text = "载入数据……";
+            if (itemList.SelectedIndex == -1)
+            {
+                shower.DocumentText = File.ReadAllText("./Html/NotFoundTemplate.html");
+                statusLabel.Text = "未选择文件";
+                return;
+            }
+            string fileid = (string)itemList.SelectedItem;
+            Helpers.Logger.Information("File I/O: Load file" + fileid);
+            LoadFile(itemList.SelectedItem as string);
+            statusLabel.Text = "就绪";
+        }
+
+        private void 下一文件ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (itemList.SelectedIndex >= itemList.Items.Count - 1) return;
+            itemList.SelectedIndex++;
+            shower.Document.Focus();
+        }
+
+        private void 上一文件ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (itemList.SelectedIndex <= 0) return;
+            itemList.SelectedIndex--;
+            shower.Document.Focus();
+        }
+
+        private void 帮助ToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("ヘルプだみー", "Dummy");
+            MessageBox.Show("哼，这下我就不是什么都没写了！");
         }
     }
 }

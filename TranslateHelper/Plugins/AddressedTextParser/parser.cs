@@ -100,6 +100,6 @@ namespace TXTSrcParser
 
         public string SupportFormat { get{return "txt"; } }
 
-        public string Description { get{return "可以解析evd抽出型TXT剧情文件"; } }
+        public string Description { get{return "可以解析地址-长度-文本型文本"; } }
     }
 }

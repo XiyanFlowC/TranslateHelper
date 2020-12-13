@@ -33,6 +33,8 @@ namespace TranslateHelper
         public static bool VerifyTrans { get; set; }
         public static bool UsingNEM { get; set; }
 
+        public static bool AskBeforeSave { get; set; }
+
         public static int LoadConfiguration(string configFilePath)
         {
             BinaryReader eye = new BinaryReader(File.OpenRead(configFilePath));
@@ -84,6 +86,15 @@ namespace TranslateHelper
                     VerifyTrans = eye.ReadBoolean();
                     UsingNEM = eye.ReadBoolean();
                 }
+
+                if(version < 14)
+                {
+                    AskBeforeSave = true;
+                }
+                else
+                {
+                    AskBeforeSave = eye.ReadBoolean();
+                }
             }
             catch (IOException)
             {
@@ -102,7 +113,7 @@ namespace TranslateHelper
 
             try
             {
-                pen.Write(13);
+                pen.Write(14);
 
                 pen.Write(SourceText);
                 pen.Write(SecondarySourceText);
@@ -123,6 +134,8 @@ namespace TranslateHelper
 
                 pen.Write(VerifyTrans);
                 pen.Write(UsingNEM);
+
+                pen.Write(AskBeforeSave);
             }
             catch(IOException)
             {

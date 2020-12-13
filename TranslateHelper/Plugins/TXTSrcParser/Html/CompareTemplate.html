@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>@[FileName]</title>
+    <script type="text/javascript" src="@[HtmlPath]/js/scripts.js"></script>
+    <script type="text/javascript" src="@[HtmlPath]/js/previewer.js"></script>
+</head>
+<body style="background-color:#fcf9f7;">
+    <h1>@[FileName] - 双来源比对</h1>
+    此模式下，只能进行另存为。
+    <hr />
+    <table>
+        <thead>
+            <tr>
+                <td style="width:25%">
+                    原始文本
+                </td>
+                <td style="width:25%">
+                    附属原文
+                </td>
+                <td style="width:25%">
+                    翻译
+                </td>
+                <td style="width:25%">预览</td>
+            </tr>
+        </thead>
+        <tbody>
+            @[ContentAsTable]
+        </tbody>
+    </table>
+    <hr />
+    此模式下，只能进行另存为。
+    <div style="height: 4in;"></div>
+</body>
+</html>

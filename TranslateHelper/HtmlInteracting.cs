@@ -19,6 +19,8 @@ namespace TranslateHelper
         bool changed = false;
         int editingID;
 
+        ToolStripStatusLabel stal;
+
         public TextContent Content 
         { 
             get
@@ -27,16 +29,22 @@ namespace TranslateHelper
             }
         }
 
-        public HtmlInteracting(TextContent cnt, WebBrowser target, bool EnableSave = true)
+        public HtmlInteracting(TextContent cnt, WebBrowser target, ToolStripStatusLabel statusLabel, bool EnableSave = true)
         {
             content = cnt;
             webBrowser = target;
             enableSave = EnableSave;//是否允许保存：部分情形这里应该保持只读
+            stal = statusLabel;
         }
 
         public void Save()
         {
-            if (!changed || !enableSave) return;//避免重复磁盘写入
+            if (!changed || !enableSave)
+            {
+                stal.Text = "保存未执行";
+                return;//避免重复磁盘写入
+            }
+            stal.Text = "正在保存……";
             for(int i = 0; i < content.Translation.Length; ++i)
             {
                 var ele = webBrowser.Document.GetElementById("trs_" + i);//从WebBrowser中载入数据
@@ -44,12 +52,15 @@ namespace TranslateHelper
                 {
                     content.SaveTranslation("./emergencydump");
                     MessageBox.Show("Save failed. Buffer data collapsed.\nData dumped to ./emergencydump");
+                    stal.Text = "保存失败，数据已转储";
                     return;
                 }
                 content.Translation[i].Dialogue = ele.InnerHtml;
             }
             content.SaveTranslation();
             changed = false;
+            stal.Text = "保存结束";
+            ParentForm.Focus();
         }
 
         public void SaveAs(string path)
@@ -60,21 +71,22 @@ namespace TranslateHelper
                 content.Translation[i].Dialogue = ele.InnerHtml;
             }
             content.SaveTranslation(path);
+            stal.Text = "另存为结束";
         }
 
         protected HtmlElement targetElement;
 
-        public void TranslationUpdate(string text)
+        void TranslationUpdate(string text)
         {
             targetElement.InnerHtml = text;
         }
 
-        public string StringEncode(string input)
+        string StringEncode(string input)
         {
             return webBrowser.Document.InvokeScript("stringEncoder", new object[] { input }) as string;
         }
 
-        public string StringDecode(string input)
+        string StringDecode(string input)
         {
             return webBrowser.Document.InvokeScript("stringDecoder", new object[] { input }) as string;
         }
@@ -99,16 +111,19 @@ namespace TranslateHelper
 
             if(iid >= content.Content.Length)
             {
-                if (DialogResult.No == MessageBox.Show("已达文件尾端，现在保存吗？", "保存", MessageBoxButtons.YesNo, MessageBoxIcon.Question)) return;
+                if(Configuration.AskBeforeSave)
+                    if (DialogResult.No == MessageBox.Show("已达文件尾端，现在保存吗？", "保存", MessageBoxButtons.YesNo, MessageBoxIcon.Question)) return;
                 Save();
+                editor.Close();
                 return;
             }
             editingID = iid;
 
-            editor.OriginalText = content.Content[iid].Dialogue;//TO DO:有时间的话改成回调吧。一个编辑窗口跨窗体改数据好丑啊……
+            editor.OriginalText = content.Content[iid].Dialogue;
             targetElement = webBrowser.Document.GetElementById("trs_" + id);
             editor.TransText = webBrowser.Document.GetElementById("trs_" + id).InnerHtml;
             editor.Edit(ParentForm);
+            stal.Text = "就绪";
         }
 
         internal void Dispose()
