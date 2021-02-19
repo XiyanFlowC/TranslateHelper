@@ -26,7 +26,7 @@ namespace TranslateHelper
             string template = File.ReadAllText(itemTemplatePath);
             StringBuilder sb = new StringBuilder();
             //int id = 0;
-            for (int id = 0; id < orig.Length; ++id)
+            for (int id = 0; id < orig.Length && id < tran.Length; ++id)
             {
                 sb.Append( Global.htmlRender.GenerateItemHtml(template, id, orig[id], tran[id]) );
             }
